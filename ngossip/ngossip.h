@@ -1,7 +1,7 @@
 #ifndef NGOSSIP_H
 #define NGOSSIP_H
 
-#include "stdbool.h"
+#include <stdbool.h>
 
 typedef unsigned long long int longnum;
 

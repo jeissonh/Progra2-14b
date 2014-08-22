@@ -1,4 +1,5 @@
 #include "ngossip.h"
+#include <math.h>
 
 #ifdef __cplusplus
 extern "C"
@@ -172,7 +173,15 @@ bool is_practical(longnum num)
 
 bool is_prime(longnum num)
 {
-	return false;
+	if ( num <= 1 ) return false;
+	if ( num == 2 ) return true;
+	if ( num % 2 == 0 ) return false;
+	longnum square_root = sqrt(num);
+	for (longnum i = 3; i <= square_root; i += 2 )
+		if ( num % i == 0 )
+			return false;
+
+	return true;
 }
 
 bool is_primorial(longnum num)

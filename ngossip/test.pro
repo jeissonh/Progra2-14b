@@ -5,5 +5,9 @@ CONFIG -= qt
 
 QMAKE_CFLAGS += -std=c11
 
-SOURCES += test.cpp
+SOURCES += test.cpp \
+    ngossip.c
+
+HEADERS += \
+    ngossip.h
 

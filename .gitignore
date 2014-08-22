@@ -19,3 +19,9 @@
 *.exe
 *.out
 *.app
+
+# QtCreator config files
+*.user*
+
+# Common Unix executables
+test

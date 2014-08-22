@@ -23,6 +23,7 @@ TEST_CASE("abundant")
 	REQUIRE( is_abundant(48) );
 	REQUIRE( is_abundant(50) == false );
 	REQUIRE( is_abundant(54) );
+	REQUIRE( is_abundant(1001) == false );
 }
 
 TEST_CASE("amicable")
@@ -156,6 +157,7 @@ TEST_CASE("composite")
 	REQUIRE( is_composite(15) );
 	REQUIRE( is_composite(16) );
 	REQUIRE( is_composite(18) );
+	REQUIRE( is_composite(1001) );
 }
 
 TEST_CASE("compositorial")
@@ -525,16 +527,20 @@ TEST_CASE("practical")
 TEST_CASE("prime")
 {
 	REQUIRE( is_prime(0) == false );
+	REQUIRE( is_prime(1) == false );
 	REQUIRE( is_prime(2) );
 	REQUIRE( is_prime(3) );
+	REQUIRE( is_prime(4) == false );
 	REQUIRE( is_prime(5) );
 	REQUIRE( is_prime(7) );
+	REQUIRE( is_prime(9) == false );
 	REQUIRE( is_prime(11) );
 	REQUIRE( is_prime(13) );
 	REQUIRE( is_prime(17) );
 	REQUIRE( is_prime(19) );
 	REQUIRE( is_prime(23) );
 	REQUIRE( is_prime(29) );
+	REQUIRE( is_prime(100000000000001llu) == false );
 }
 
 TEST_CASE("primorial")
