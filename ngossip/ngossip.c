@@ -269,7 +269,7 @@ bool is_hypotenuse(longnum num)
 	return false;
 }
 
-bool is_persistent_number(longnum num)
+bool is_persistent(longnum num)
 {
 	return false;
 }

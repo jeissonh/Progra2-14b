@@ -407,11 +407,24 @@ bool is_weird(longnum num);
 	F5 = (2^2)^5 + 1 = 4,294,967,297 = 6,700,416x641, a composite number.
 	It was later shown that F8 through F20 were all composite. While never proved, it is widely
 	accepted that all Fermat Numbers beyond F4 are composite.
+
+	Examples:
+		3 because 2^(2^0)+1 == 2^1+1 == 3
+		5 because 2^(2^1)+1 == 2^2+1 == 5
+	   17 because 2^(2^2)+1 == 2^4+1 == 17
+	  257 because 2^(2^3)+1 == 2^8+1 == 257
+	65537 because 2^(2^4)+1 == 2^16+1 == 65537
 */
 bool is_fermat(longnum num);
 
 /**
-	True if there exist two other integers a and b, such a^2 + b^2 == num
+	True if there exist two other integers a and b, such sqrt(a^2 + b^2) == num
+
+	Examples:
+		5 == (2^2 + 3^2)/5
+		13 == (5^2 + 12^2)/13
+		17 == (8^2 + 15^2)/17
+		25 == (7^2 + 24^2)/25
 */
 bool is_hypotenuse(longnum num);
 
@@ -428,7 +441,7 @@ bool is_hypotenuse(longnum num);
 
 	@remarks This definition was modified from original by including the number of digits of num
 */
-bool is_persistent_number(longnum num);
+bool is_persistent(longnum num);
 
 /**
 	We call a number a product perfect number if the product of all its divisors, other than itself,

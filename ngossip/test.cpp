@@ -808,3 +808,150 @@ TEST_CASE("weird")
 	REQUIRE( is_weird(10570) );
 	REQUIRE( is_weird(10792) );
 }
+
+TEST_CASE("fermat")
+{
+	REQUIRE( is_fermat(0) == false );
+	REQUIRE( is_fermat(3) );
+	REQUIRE( is_fermat(5) );
+	REQUIRE( is_fermat(17) );
+	REQUIRE( is_fermat(257) );
+	REQUIRE( is_fermat(65537) );
+	REQUIRE( is_fermat(4294967297llu) );
+}
+
+TEST_CASE("hypotenuse")
+{
+	REQUIRE( is_hypotenuse(0) == false );
+	REQUIRE( is_hypotenuse(5) );
+	REQUIRE( is_hypotenuse(13) );
+	REQUIRE( is_hypotenuse(17) );
+	REQUIRE( is_hypotenuse(25) );
+	REQUIRE( is_hypotenuse(29) );
+	REQUIRE( is_hypotenuse(37) );
+	REQUIRE( is_hypotenuse(41) );
+	REQUIRE( is_hypotenuse(53) );
+	REQUIRE( is_hypotenuse(61) );
+	REQUIRE( is_hypotenuse(65) );
+	REQUIRE( is_hypotenuse(65) );
+	REQUIRE( is_hypotenuse(73) );
+	REQUIRE( is_hypotenuse(85) );
+	REQUIRE( is_hypotenuse(85) );
+	REQUIRE( is_hypotenuse(89) );
+	REQUIRE( is_hypotenuse(97) );
+	REQUIRE( is_hypotenuse(101) );
+	REQUIRE( is_hypotenuse(109) );
+	REQUIRE( is_hypotenuse(113) );
+	REQUIRE( is_hypotenuse(125) );
+	REQUIRE( is_hypotenuse(137) );
+	REQUIRE( is_hypotenuse(145) );
+	REQUIRE( is_hypotenuse(145) );
+	REQUIRE( is_hypotenuse(149) );
+	REQUIRE( is_hypotenuse(157) );
+	REQUIRE( is_hypotenuse(169) );
+	REQUIRE( is_hypotenuse(173) );
+	REQUIRE( is_hypotenuse(181) );
+	REQUIRE( is_hypotenuse(185) );
+	REQUIRE( is_hypotenuse(185) );
+	REQUIRE( is_hypotenuse(193) );
+	REQUIRE( is_hypotenuse(197) );
+	REQUIRE( is_hypotenuse(205) );
+	REQUIRE( is_hypotenuse(205) );
+	REQUIRE( is_hypotenuse(221) );
+	REQUIRE( is_hypotenuse(221) );
+	REQUIRE( is_hypotenuse(229) );
+	REQUIRE( is_hypotenuse(233) );
+	REQUIRE( is_hypotenuse(241) );
+	REQUIRE( is_hypotenuse(257) );
+	REQUIRE( is_hypotenuse(265) );
+	REQUIRE( is_hypotenuse(265) );
+	REQUIRE( is_hypotenuse(269) );
+	REQUIRE( is_hypotenuse(277) );
+	REQUIRE( is_hypotenuse(281) );
+	REQUIRE( is_hypotenuse(289) );
+	REQUIRE( is_hypotenuse(293) );
+}
+
+TEST_CASE("persistent")
+{
+	REQUIRE( is_persistent(0) == false );
+	REQUIRE( is_persistent(555) == false );
+	REQUIRE( is_persistent(764) );
+	REQUIRE( is_persistent(789) == false );
+	REQUIRE( is_persistent(999) );
+}
+
+TEST_CASE("product_perfect")
+{
+	REQUIRE( is_product_perfect(0) == false );
+	REQUIRE( is_product_perfect(6) );
+	REQUIRE( is_product_perfect(8) );
+	REQUIRE( is_product_perfect(10) );
+	REQUIRE( is_product_perfect(14) );
+	REQUIRE( is_product_perfect(15) );
+	REQUIRE( is_product_perfect(21) );
+	REQUIRE( is_product_perfect(22) );
+	REQUIRE( is_product_perfect(26) );
+	REQUIRE( is_product_perfect(27) );
+	REQUIRE( is_product_perfect(28) );
+	REQUIRE( is_product_perfect(33) );
+	REQUIRE( is_product_perfect(34) );
+	REQUIRE( is_product_perfect(35) );
+	REQUIRE( is_product_perfect(38) );
+	REQUIRE( is_product_perfect(39) );
+	REQUIRE( is_product_perfect(44) );
+	REQUIRE( is_product_perfect(45) );
+	REQUIRE( is_product_perfect(46) );
+	REQUIRE( is_product_perfect(51) );
+	REQUIRE( is_product_perfect(52) );
+	REQUIRE( is_product_perfect(55) );
+	REQUIRE( is_product_perfect(57) );
+	REQUIRE( is_product_perfect(58) );
+}
+
+TEST_CASE("parasite")
+{
+	REQUIRE( is_parasite(0) == false );
+	REQUIRE( is_parasite(102564) );
+	REQUIRE( is_parasite(410256) );
+	REQUIRE( is_parasite(179487) );
+	REQUIRE( is_parasite(717948) );
+	REQUIRE( is_parasite(142857) );
+	REQUIRE( is_parasite(285714) );
+	REQUIRE( is_parasite(428571) );
+	REQUIRE( is_parasite(571428) );
+	REQUIRE( is_parasite(714285) );
+	REQUIRE( is_parasite(857142) );
+}
+
+TEST_CASE("easy_to_remember")
+{
+	REQUIRE( is_easy_to_remember(9875) == false );
+	REQUIRE( is_easy_to_remember(9876) );
+	REQUIRE( is_easy_to_remember(345678) );
+	REQUIRE( is_easy_to_remember(6543210) );
+	REQUIRE( is_easy_to_remember(4000) );
+	REQUIRE( is_easy_to_remember(4422) );
+	REQUIRE( is_easy_to_remember(333000444llu) );
+	REQUIRE( is_easy_to_remember(555559977llu) );
+}
+
+TEST_CASE("ecci1")
+{
+	REQUIRE( is_ecci1(0) == false );
+	REQUIRE( is_ecci1(12) );
+	REQUIRE( is_ecci1(20) );
+	REQUIRE( is_ecci1(21) );
+	REQUIRE( is_ecci1(24) );
+}
+
+TEST_CASE("ecci2")
+{
+	REQUIRE( is_ecci2(0) == false );
+	REQUIRE( is_ecci2(1) == false );
+	REQUIRE( is_ecci2(2) == false );
+	REQUIRE( is_ecci2(20) == false );
+	REQUIRE( is_ecci2(21) );
+	REQUIRE( is_ecci2(22) == false );
+	REQUIRE( is_ecci2(32) );
+}
