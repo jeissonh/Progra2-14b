@@ -453,21 +453,30 @@ bool is_product_perfect(longnum num);
 bool is_parasite(longnum num);
 
 /**
-	True if n is divisible by the sum of its digits
-*/
-bool is_ecci1(longnum num);
-
-/**
-	True if the sum of digits of num equals the count of proper divisors of num
-*/
-bool is_ecci2(longnum num);
-
-/**
 	True if (1) each digit is consecutive of the previous one. E.g: 345678, 6543210.
 	Or (2) digits repeat consecutively and the number of repetitions is less than or equal to
 	sqrt(digits(num)). E.g: 333000444, 555559977, 4000, 4422
 */
 bool is_easy_to_remember(longnum num);
+
+/**
+	True if n has 2 or more digits and it is divisible by the sum of its digits
+	Examples:
+		12 is divisible by 3==1+2
+		20 is divisible by 2==2+0
+		21 is divisible by 3==2+1
+		24 is divisible by 6==2+4
+*/
+bool is_ecci1(longnum num);
+
+/**
+	True if the sum of digits of num equals the count of proper divisors of num
+	Examples:
+		21 because 2+1 == 3 and count{1, 3, 7} == 3
+		32 because 3+2 == 5 and count{1, 2, 4, 8, 16} == 5
+*/
+bool is_ecci2(longnum num);
+
 
 
 #ifdef __cplusplus
