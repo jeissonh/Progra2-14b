@@ -68,7 +68,7 @@ bool is_deficient(longnum num)
 
 bool is_even(longnum num)
 {
-	return false;
+	return num % 2 == 0;
 }
 
 bool is_evil(longnum num)
@@ -128,7 +128,7 @@ bool is_narcissistic(longnum num)
 
 bool is_odd(longnum num)
 {
-	return false;
+	return num % 2 == 1;
 }
 
 bool is_odious(longnum num)
@@ -258,6 +258,47 @@ bool is_weird(longnum num)
 {
 	return false;
 }
+
+bool is_fermat(longnum num)
+{
+	return false;
+}
+
+bool is_hypotenuse(longnum num)
+{
+	return false;
+}
+
+bool is_persistent_number(longnum num)
+{
+	return false;
+}
+
+bool is_product_perfect(longnum num)
+{
+	return false;
+}
+
+bool is_parasite(longnum num)
+{
+	return false;
+}
+
+bool is_easy_to_remember(longnum num)
+{
+	return false;
+}
+
+bool is_ecci1(longnum num)
+{
+	return false;
+}
+
+bool is_ecci2(longnum num)
+{
+	return false;
+}
+
 
 #ifdef __cplusplus
 }

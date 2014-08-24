@@ -31,7 +31,7 @@ bool is_abundant(longnum num);
 bool is_amicable(longnum num);
 
 /**
-	The number n is called an apocalyptic power if 2n contains the consecutive digits 666 (in decimal).
+	The number n is called an apocalyptic power if 2^n contains the consecutive digits 666 (in decimal).
 	First ten: 157, 192, 218, 220, 222, 224, 226, 243, 245, 247
 	There are 6485 apocalyptic powers below 10,000.
 */
@@ -45,8 +45,8 @@ bool is_apocalyptic_power(longnum num);
 bool is_aspiring(longnum num);
 
 /**
-	The number n is called an automorphic number if (the decimal expansion of) n2 ends with n. These numbers are also called curious.
-	It is curious, how for a k-digit automorphic number n there is another automorphic number -- 10k + 1 - n. For this to work with n=1, you have to treat 1 as a zero-digit number.
+	The number n is called an automorphic number if (the decimal expansion of) n^2 ends with n. These numbers are also called curious.
+	It is curious, how for a k-digit automorphic number n there is another automorphic number -- 10^k + 1 - n. For this to work with n=1, you have to treat 1 as a zero-digit number.
 	First ten: 1, 5, 6, 25, 76, 376, 625, 9376, 90625, 109376
 	There are 8 automorphic numbers below 10,000.
 */
@@ -61,7 +61,7 @@ bool is_automorphic(longnum num);
 bool is_cake(longnum num);
 
 /**
-	The composite integer n is a Carmichael number if bn-1 = 1 (mod n) for every integer b which is relatively prime with n.
+	The composite integer n is a Carmichael number if b^(n-1) = 1 (mod n) for every integer b which is relatively prime with n.
 	Carmichael numbers behave like prime numbers with respect to the most useful primality test, that is they pretend to be prime.
 	First ten: 561, 1105, 1729, 2465, 2821, 6601, 8911, 10585, 15841, 29341
 	There are 7 Carmichael numbers below 10,000.
@@ -256,8 +256,8 @@ bool is_perfect(longnum num);
 bool is_power_of_2(longnum num);
 
 /**
-	An integer n is powerful if for every prime p dividing n, p2 also divides n.
-	How much power? They all can be written as a2 b3.
+	An integer n is powerful if for every prime p dividing n, p^2 also divides n.
+	How much power? They all can be written as a^2 b^3.
 	First ten: 1, 4, 8, 9, 16, 25, 27, 32, 36, 49
 	There are 184 powerful numbers below 10,000.
 */
@@ -301,6 +301,13 @@ bool is_pronic(longnum num);
 	There are 4 repunits below 10,000.
 */
 bool is_repunit(longnum num);
+
+/**
+	A repunit is an integer in which every digit is the same.
+	The term repunit comes from combining "repeated" and "digit".
+	Examples: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 22, 33, 44, 55, 66, 77, 88, 99, 111, 222, 333, 444, 555, 666, 777, 888, 999, 1111
+*/
+bool is_repdigit(longnum num);
 
 /**
 	A composite number is called a Smith number if the sum of its digits equals the sum of all the digits appearing in its prime divisors (counting multiplicity).
@@ -391,6 +398,77 @@ bool is_vampire(longnum num);
 	Home Browse all Properties Links Contact Credits Editorial Policy
 */
 bool is_weird(longnum num);
+
+/**
+	Pierre de Fermat once hypothesized that all numbers of the form F(n) = (2^(2^n)) + 1 were prime
+	numbers. His conclusion was based on the results derived for n = 0, 1, 2, 3, and 4, which
+	produced the primes of 3, 5, 17, 257 and 65,537. These numbers were called Fermat Numbers,
+	F0, F1, F2, F3, and F4. However, Leonard Euler discovered in 1732 that
+	F5 = (2^2)^5 + 1 = 4,294,967,297 = 6,700,416x641, a composite number.
+	It was later shown that F8 through F20 were all composite. While never proved, it is widely
+	accepted that all Fermat Numbers beyond F4 are composite.
+*/
+bool is_fermat(longnum num);
+
+/**
+	True if there exist two other integers a and b, such a^2 + b^2 == num
+*/
+bool is_hypotenuse(longnum num);
+
+/**
+	Multiply the digits of @a num, it produces a new num2. Repeat multiplying digits of num2, you
+	get num3. Repeat until you get a number of one digit. Count the number of times the previous
+	process was made. If this count is greater than digits of num, it is a persistent number.
+
+	For example, take the number 764. 7x6x4 = 168; 1x6x8 = 48; 4x8 = 32; and finally, 3x2 = 6.
+	The number of multiplication steps required to reach the single digit number
+	from the given number is referred to as the "persistence" of the starting number.
+	764 required 4 steps, therefore persistence(764) = 4. Because 4 > digits(764) = 3, 764 is
+	a persistent number.
+
+	@remarks This definition was modified from original by including the number of digits of num
+*/
+bool is_persistent_number(longnum num);
+
+/**
+	We call a number a product perfect number if the product of all its divisors, other than itself,
+	is equal to the number. For example, 10 and 21 are product perfect numbers since 1*2*5 = 10
+	and 1*3*7 = 21, whereas 25 is not, since the product of its divisors, 1*5 = 5 is too small
+
+	Examples: 6,8,10,14,15,21,22,26,27,28,33,34,35,38,39,44,45,46,51,52,55,57,58
+*/
+bool is_product_perfect(longnum num);
+
+/**
+	A parasite number is one that retains the exact same digits when multiplied or divided by
+	another number. For example 102,564 x 4 = 410,256 arrived at by merely moving the last 4 to the
+	beginning of the remaining 5 digits. Similarly, 179,487 x 4 = 717,948. You might say that the
+	digits are parasitic after being operated on.
+
+	A cyclic number is a number of "n" digits that when multiplied by 1, 2, 3,...n, results in the
+	same digits but in a different order. For example, the number 142,857 is a cyclic number since
+	142,857 x 2 = 285,714, 142,857 x 3 = 428,571, 142,857 x 4 = 571,428, and so on. It is not known
+	just how many cyclic numbers exist.
+*/
+bool is_parasite(longnum num);
+
+/**
+	True if n is divisible by the sum of its digits
+*/
+bool is_ecci1(longnum num);
+
+/**
+	True if the sum of digits of num equals the count of proper divisors of num
+*/
+bool is_ecci2(longnum num);
+
+/**
+	True if (1) each digit is consecutive of the previous one. E.g: 345678, 6543210.
+	Or (2) digits repeat consecutively and the number of repetitions is less than or equal to
+	sqrt(digits(num)). E.g: 333000444, 555559977, 4000, 4422
+*/
+bool is_easy_to_remember(longnum num);
+
 
 #ifdef __cplusplus
 }

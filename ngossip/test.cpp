@@ -293,6 +293,47 @@ TEST_CASE("happy")
 	REQUIRE( is_happy(31) );
 	REQUIRE( is_happy(32) );
 	REQUIRE( is_happy(44) );
+	REQUIRE( is_happy(49) );
+	REQUIRE( is_happy(68) );
+	REQUIRE( is_happy(70) );
+	REQUIRE( is_happy(79) );
+	REQUIRE( is_happy(82) );
+	REQUIRE( is_happy(86) );
+	REQUIRE( is_happy(91) );
+	REQUIRE( is_happy(94) );
+	REQUIRE( is_happy(97) );
+	REQUIRE( is_happy(100) );
+	REQUIRE( is_happy(130) );
+	REQUIRE( is_happy(103) );
+	REQUIRE( is_happy(310) );
+	REQUIRE( is_happy(301) );
+	REQUIRE( is_happy(190) );
+	REQUIRE( is_happy(109) );
+	REQUIRE( is_happy(910) );
+	REQUIRE( is_happy(901) );
+	REQUIRE( is_happy(230) );
+	REQUIRE( is_happy(203) );
+	REQUIRE( is_happy(320) );
+	REQUIRE( is_happy(302) );
+	REQUIRE( is_happy(280) );
+	REQUIRE( is_happy(208) );
+	REQUIRE( is_happy(820) );
+	REQUIRE( is_happy(802) );
+	REQUIRE( is_happy(440) );
+	REQUIRE( is_happy(404) );
+	REQUIRE( is_happy(490) );
+	REQUIRE( is_happy(409) );
+	REQUIRE( is_happy(940) );
+	REQUIRE( is_happy(904) );
+	REQUIRE( is_happy(680) );
+	REQUIRE( is_happy(608) );
+	REQUIRE( is_happy(860) );
+	REQUIRE( is_happy(806) );
+	REQUIRE( is_happy(700) );
+	REQUIRE( is_happy(790) );
+	REQUIRE( is_happy(709) );
+	REQUIRE( is_happy(970) );
+	REQUIRE( is_happy(907) );
 }
 
 TEST_CASE("hungry")
