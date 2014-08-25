@@ -2,7 +2,7 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
-#include "ngossip.c"
+#include "ngossip.h"
 
 TEST_CASE("abundant")
 {

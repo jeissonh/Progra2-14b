@@ -48,6 +48,12 @@ bool is_catalan(longnum num)
 
 bool is_composite(longnum num)
 {
+	if ( num <= 3 ) return false;
+	if ( num % 2 == 0 ) return true;
+	longnum square_root = sqrt(num);
+	for (longnum i = 3; i <= square_root; i += 2 )
+		if ( num % i == 0 )
+			return true;
 
 	return false;
 }
@@ -193,10 +199,10 @@ bool is_primorial(longnum num)
 bool is_pronic(longnum num)
 {
 	if ( num == 2)
-        return true;
+		return true;
 	for (longnum i = 1; i<= (num/2); i++){
 		if (i*(i+1)==num)
-            return true;
+			return true;
 	}
 	return false;
 }
