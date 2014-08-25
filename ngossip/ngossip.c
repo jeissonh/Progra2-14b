@@ -178,7 +178,7 @@ bool is_prime(longnum num)
 	if ( num == 2 ) return true;
 	if ( num % 2 == 0 ) return false;
 	longnum square_root = sqrt(num);
-	for (longunm i = 3; i <= square_root; i += 2 )
+	for (longnum i = 3; i <= square_root; i += 2 )
 		if ( num % i == 0 )
 			return false;
 
