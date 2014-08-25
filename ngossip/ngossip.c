@@ -191,6 +191,11 @@ bool is_primorial(longnum num)
 
 bool is_pronic(longnum num)
 {
+	if ( num == 2) return true;
+	for (longnum i = 1; i<= num/2; i++)
+		if (i*(i+1)==num)
+			reutn true;
+			
 	return false;
 }
 
