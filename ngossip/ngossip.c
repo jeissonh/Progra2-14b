@@ -80,6 +80,15 @@ bool is_even(longnum num)
 
 bool is_evil(longnum num)
 {
+    longnum n_unos = 0;
+    while (num > 0)
+    {
+        if (num % 2 == 1)
+            n_unos++;
+        num = num/2;
+    }
+    if (n_unos % 2 == 0 && n_unos > 0)
+        return true;
 	return false;
 }
 
