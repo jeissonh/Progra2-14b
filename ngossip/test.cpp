@@ -147,16 +147,26 @@ TEST_CASE("catalan")
 TEST_CASE("composite")
 {
 	REQUIRE( is_composite(0) == false );
+	REQUIRE( is_composite(1) == false );
+	REQUIRE( is_composite(2) == false );
+	REQUIRE( is_composite(3) == false );
 	REQUIRE( is_composite(4) );
+	REQUIRE( is_composite(5) == false );
 	REQUIRE( is_composite(6) );
+	REQUIRE( is_composite(7) == false );
 	REQUIRE( is_composite(8) );
 	REQUIRE( is_composite(9) );
 	REQUIRE( is_composite(10) );
+	REQUIRE( is_composite(11) == false );
 	REQUIRE( is_composite(12) );
+	REQUIRE( is_composite(13) == false );
 	REQUIRE( is_composite(14) );
 	REQUIRE( is_composite(15) );
 	REQUIRE( is_composite(16) );
+	REQUIRE( is_composite(17) == false );
 	REQUIRE( is_composite(18) );
+	REQUIRE( is_composite(19) == false );
+	REQUIRE( is_composite(105) );
 	REQUIRE( is_composite(1001) );
 }
 
