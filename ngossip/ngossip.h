@@ -490,6 +490,13 @@ bool is_ecci1(longnum num);
 */
 bool is_ecci2(longnum num);
 
+/**
+ * @brief Returns the number of digits of num
+ * @param num A positive integer or zero
+ * @return The number of digits. For example: count_digits(100) returns 3,
+ * count_digits(0) returns 1, count_digits(-1) depends on architecture
+ */
+int count_digits(longnum num);
 
 
 #ifdef __cplusplus

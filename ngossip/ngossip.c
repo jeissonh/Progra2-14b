@@ -336,6 +336,19 @@ bool is_ecci2(longnum num)
 }
 
 
+int count_digits(longnum num)
+{
+	// Zero has 1 digit also
+	int count = 1;
+
+	// Each time the original number can be divided by 10, a digit is found
+	for ( num /= 10; num != 0; num /= 10 )
+		++count;
+
+	return count;
+}
+
+
 #ifdef __cplusplus
 }
 #endif

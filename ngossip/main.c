@@ -53,10 +53,10 @@ bool is_integer(const char text[])
 
 int print_properties(const char* text)
 {
-	longnum num = atoll(text);
+	longnum num = strtoull(text, NULL, 10);
 	if ( num == 0 ) return 1;
 
-	printf("%llu\n", num);
+	printf("%llu:\n", num);
 
 	if ( is_abundant(num) ) printf(" abundant");
 	if ( is_amicable(num) ) printf(" amicable");
@@ -117,6 +117,6 @@ int print_properties(const char* text)
 	if ( is_vampire(num) ) printf(" vampire");
 	if ( is_weird(num) ) printf(" weird");
 
-	printf("\n");
+	printf("\n\n");
 	return 0;
 }
