@@ -25,3 +25,7 @@
 
 # Common Unix executables
 test
+
+# Specific executables
+/ngossip/ngossip
+

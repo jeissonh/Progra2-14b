@@ -80,15 +80,15 @@ bool is_even(longnum num)
 
 bool is_evil(longnum num)
 {
-    longnum n_unos = 0;
-    while (num > 0)
-    {
-        if (num % 2 == 1)
-            n_unos++;
-        num = num/2;
-    }
-    if (n_unos % 2 == 0 && n_unos > 0)
-        return true;
+	longnum n_unos = 0;
+	while (num > 0)
+	{
+		if (num % 2 == 1)
+			n_unos++;
+		num = num/2;
+	}
+	if (n_unos % 2 == 0 && n_unos > 0)
+		return true;
 	return false;
 }
 
@@ -221,6 +221,11 @@ bool is_repunit(longnum num)
 	return false;
 }
 
+bool is_repdigit(longnum num)
+{
+	return false;
+}
+
 bool is_smith(longnum num)
 {
 	return false;
@@ -283,15 +288,15 @@ bool is_weird(longnum num)
 
 bool is_fermat(longnum num)
 {
-    longnum i = 0;
-    longnum current_fermat = 0;
-    while (num >= current_fermat)
-    {
-        current_fermat = pow(2,pow(2,i))+1;
-        if (num == current_fermat)
-            return true;
-        i++;
-    }
+	longnum i = 0;
+	longnum current_fermat = 0;
+	while (num >= current_fermat)
+	{
+		current_fermat = pow(2,pow(2,i))+1;
+		if (num == current_fermat)
+			return true;
+		i++;
+	}
 	return false;
 }
 
