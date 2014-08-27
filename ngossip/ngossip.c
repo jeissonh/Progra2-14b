@@ -6,11 +6,24 @@ extern "C"
 {
 #endif
 
-bool is_abundant(longnum num)
-{
-	return false;
+bool is_abundant(longnum num){
+int max=num/2;
+int cont=0;
+int entero=0;
+int i;
+for(i=2;i<=max; i++){
+if(num%i==0){
+ entero=num/i;
+cont=cont+entero;
 }
+if (cont>num){
+return true;
+}
+}
+return false;
 
+}
+/*
 bool is_amicable(longnum num)
 {
 	return false;
@@ -25,11 +38,74 @@ bool is_aspiring(longnum num)
 {
 	return false;
 }
-
+*/
 bool is_automorphic(longnum num)
 {
-	return false;
+    if(num==0){return false;}
+longnum num_elevated=pow(num,2);
+if(num_elevated<100){
+if(num_elevated%10==num){
+return true;
 }
+}
+if(num_elevated<1000){
+if(num_elevated%100==num)
+return true;
+}
+
+if (num_elevated<10000){
+if(num_elevated%1000){
+return true;
+}
+}
+if (num_elevated<100000){
+if(num_elevated%10000){
+return true;
+}
+}
+if (num_elevated<1000000){
+if(num_elevated%100000){
+return true;
+}
+}
+if (num_elevated<10000000){
+if(num_elevated%1000000){
+return true;
+}
+}
+if (num_elevated<100000000){
+if(num_elevated%10000000){
+return true;
+}
+}
+if (num_elevated<1000000000){
+if(num_elevated%100000000){
+return true;
+}
+}
+if (num_elevated<10000000000){
+if(num_elevated%1000000000){
+return true;
+}
+}
+if (num_elevated<100000000000){
+if(num_elevated%10000000000){
+return true;
+}
+}
+if (num_elevated<1000000000000){
+if(num_elevated%10000000000){
+return true;
+}
+}
+if (num_elevated<10000000000000){
+if(num_elevated%100000000000){
+return true;
+}
+}
+ return false;
+}
+/*
 
 bool is_cake(longnum num)
 {
@@ -348,7 +424,7 @@ int count_digits(longnum num)
 	return count;
 }
 
-
+*/
 #ifdef __cplusplus
 }
 #endif
