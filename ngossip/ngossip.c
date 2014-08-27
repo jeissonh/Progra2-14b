@@ -31,7 +31,7 @@ return true;
 return false;
 
 }
-/*
+
 bool is_amicable(longnum num)
 {
     return false;
@@ -46,19 +46,13 @@ bool is_aspiring(longnum num)
 {
     return false;
 }
-*/
+
 bool is_automorphic(longnum num)
 {
-
-    return false;
-}
-
-longnum get_cake(double num)
-{
-    double cake = ((pow(num, 3)) + (5 * num) + 6) / 6;
-    return (longnum)cake;
-
     if(num==0){return false;}
+
+	if(num==0){return false;}
+
 longnum num_elevated=pow(num,2);
 if(num_elevated<100){
 if(num_elevated%10==num){
@@ -124,6 +118,11 @@ return true;
  return false;
 }
 
+longnum get_cake(double num)
+{
+    double cake = ((pow(num, 3)) + (5 * num) + 6) / 6;
+    return (longnum)cake;
+}
 
 bool is_cake(longnum num)
 {
@@ -185,52 +184,53 @@ bool is_carmichael(longnum num)
 
 bool is_catalan(longnum num){
 
-    longnum i, j, k, n, producto, pre_numerador, denominador, pre_denominador1, pre_denominador2, numerador, denominador1, denominador2;
+	longnum i, j, k, n, producto, pre_numerador, denominador, pre_denominador1, pre_denominador2, numerador, denominador1, denominador2;
 
-    if (num == 0) {return false;}
+	if (num == 0) {return false;}
 
-    n = 1;
+	n = 1;
 
-    while (n <= num){
+	while (n <= num){
 
-    pre_numerador = (2 * n);
-    pre_denominador1 = (n + 1);
-    pre_denominador2 = n;
-    numerador = 1;
-    denominador1 = 1;
-    denominador2 = 1;
+	pre_numerador = (2 * n);
+	pre_denominador1 = (n + 1);
+	pre_denominador2 = n;
+	numerador = 1;
+	denominador1 = 1;
+	denominador2 = 1;
 
-    for (i = 1; i <= pre_numerador; i++){
-        numerador *= i;
-    }
+	for (i = 1; i <= pre_numerador; i++){
+		numerador *= i;
+	}
 
-    for (j = 1; j <= pre_denominador1; j++){
-        denominador1 *= j;
-    }
+	for (j = 1; j <= pre_denominador1; j++){
+		denominador1 *= j;
+	}
 
-    for (k = 1; k <= pre_denominador2; k++){
-        denominador2 *= k;
-    }
+	for (k = 1; k <= pre_denominador2; k++){
+		denominador2 *= k;
+	}
 
-    denominador = denominador1 * denominador2;
-    if (denominador != 0) {producto = numerador / denominador;}
+	denominador = denominador1 * denominador2;
+	if (denominador != 0) {producto = numerador / denominador;}
 
-    if (producto == num) {
-        return true;
-    }
-    else {
-        n++;
-    }
+	if (producto == num) {
+		return true;
+	}
+	else {
+		n++;
+	}
 
-    }
+	}
 
-    return false;
+	return false;
 
 
 }
 
 bool is_composite(longnum num)
 {
+
 
     if ( num <= 3 ) return false;
     if ( num % 2 == 0 ) return true;
@@ -247,6 +247,9 @@ bool is_composite(longnum num)
     return false;
 
     longnum i;
+
+	longnum i;
+
 	if ( num <= 3 ) return false;
 	if ( num % 2 == 0 ) return true;
 	longnum square_root = sqrt(num);
@@ -259,29 +262,29 @@ bool is_composite(longnum num)
 
 bool is_compositorial(longnum num){
 
-    longnum n, producto;
+	longnum n, producto;
 
-    if (num == 0) {return false;}
+	if (num == 0) {return false;}
 
-    producto = 1;
-    n = 4;
+	producto = 1;
+	n = 4;
 
-    while (producto < num) {
+	while (producto < num) {
 
-        if (is_composite(n) == true) {
-            producto *= n;
-        }
+		if (is_composite(n) == true) {
+			producto *= n;
+		}
 
-        n++;
+		n++;
 
-    }
+	}
 
-    if (producto == num) {
-        return true;
-    }
-    else{
-        return false;
-    }
+	if (producto == num) {
+		return true;
+	}
+	else{
+		return false;
+	}
 
 
 }
@@ -587,7 +590,9 @@ int count_digits(longnum num)
 	return count;
 }
 
-/**/
+
+
+
 
 #ifdef __cplusplus
 }

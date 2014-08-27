@@ -27,7 +27,7 @@ TEST_CASE("abundant")
 	REQUIRE( is_abundant(1001) == false );
 	REQUIRE( is_abundant(1789) == false );
 }
-/*
+
 TEST_CASE("amicable")
 {
 	REQUIRE( is_amicable(0) == false );
@@ -89,7 +89,7 @@ TEST_CASE("aspiring")
 	REQUIRE( is_aspiring(652) );
 	REQUIRE( is_aspiring(1789) == false );
 }
-*/
+
 TEST_CASE("automorphic")
 {
 	REQUIRE( is_automorphic(0) == false );
@@ -240,19 +240,31 @@ TEST_CASE("deficient")
 
 TEST_CASE("even")
 {
-	REQUIRE( is_even(0) == false );
+	REQUIRE( is_even(0) );
+	REQUIRE( is_even(1) == false );
 	REQUIRE( is_even(2) );
+	REQUIRE( is_even(3) == false );
 	REQUIRE( is_even(4) );
+	REQUIRE( is_even(5) == false );
 	REQUIRE( is_even(6) );
+	REQUIRE( is_even(7) == false );
 	REQUIRE( is_even(8) );
+	REQUIRE( is_even(9) == false );
 	REQUIRE( is_even(10) );
+	REQUIRE( is_even(11) == false );
 	REQUIRE( is_even(12) );
+	REQUIRE( is_even(13) == false );
 	REQUIRE( is_even(14) );
+	REQUIRE( is_even(15) == false );
 	REQUIRE( is_even(16) );
+	REQUIRE( is_even(17) == false );
 	REQUIRE( is_even(18) );
+	REQUIRE( is_even(19) == false );
 	REQUIRE( is_even(20) );
 	REQUIRE( is_even(293) == false );
 	REQUIRE( is_even(1789) == false );
+	REQUIRE( is_even(213879132llu) );
+	REQUIRE( is_even(1318981281llu) == false );
 }
 
 TEST_CASE("evil")
@@ -464,7 +476,7 @@ TEST_CASE("mersenne_prime")
 	REQUIRE( is_mersenne_prime(2147483647) );
 	REQUIRE( is_mersenne_prime(2305843009213693951llu) );
 //	REQUIRE( is_mersenne_prime(618970019642690137449562111llu) );
-    REQUIRE( is_mersenne_prime(1789) == false );
+	REQUIRE( is_mersenne_prime(1789) == false );
 }
 
 TEST_CASE("narcissistic")
@@ -587,7 +599,7 @@ TEST_CASE("perfect")
 	REQUIRE( is_perfect(2305843008139952128llu) );
 //	REQUIRE( is_perfect(2658455991569831744654692615953842176llu) );
 //	REQUIRE( is_perfect(191561942608236107294793378084303638130997321548169216llu) );
-    REQUIRE( is_perfect(1789) == false );
+	REQUIRE( is_perfect(1789) == false );
 }
 
 TEST_CASE("power_of_2")
@@ -1056,6 +1068,12 @@ TEST_CASE("ecci2")
 	REQUIRE( is_ecci2(21) );
 	REQUIRE( is_ecci2(22) == false );
 	REQUIRE( is_ecci2(32) );
+    REQUIRE( is_ecci2(1789) == false );
+
 }
+
+
+
+
 
 
