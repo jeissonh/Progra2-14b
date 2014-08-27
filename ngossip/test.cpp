@@ -101,17 +101,18 @@ TEST_CASE("automorphic")
 
 TEST_CASE("cake")
 {
-	REQUIRE( is_cake(0) == false );
-	REQUIRE( is_cake(2) );
-	REQUIRE( is_cake(4) );
-	REQUIRE( is_cake(8) );
-	REQUIRE( is_cake(15) );
-	REQUIRE( is_cake(26) );
-	REQUIRE( is_cake(42) );
-	REQUIRE( is_cake(64) );
-	REQUIRE( is_cake(93) );
-	REQUIRE( is_cake(130) );
-	REQUIRE( is_cake(176) );
+    REQUIRE( is_cake(0) == false );
+    REQUIRE( is_cake(2) );
+    REQUIRE( is_cake(4) );
+    REQUIRE( is_cake(8) );
+    REQUIRE( is_cake(15) );
+    REQUIRE( is_cake(26) );
+    REQUIRE( is_cake(42) );
+    REQUIRE( is_cake(64) );
+    REQUIRE( is_cake(93) );
+    REQUIRE( is_cake(130) );
+    REQUIRE( is_cake(176) );
+    REQUIRE( is_cake(137549728) );/**/
 }
 
 TEST_CASE("carmichael")
@@ -955,3 +956,8 @@ TEST_CASE("ecci2")
 	REQUIRE( is_ecci2(22) == false );
 	REQUIRE( is_ecci2(32) );
 }
+
+/*TEST_CASE("get_cake")
+{
+    REQUIRE ( get_cake(3) == 8);
+}*/
