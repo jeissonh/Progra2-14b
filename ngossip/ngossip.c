@@ -526,12 +526,13 @@ bool is_tetrahedral(longnum num)
 
 bool is_triangular(longnum num)
 {
-    longnum temp,i;
+    longnum nuevoNum,temp,i;
     temp = 0;
+    nuevoNum = num * 2,
     for(i = 1; i < num; i++)
     {
         temp = i * (i + 1);
-        if(temp == num)
+        if(temp == nuevoNum)
             return true;
     }
     return false;
