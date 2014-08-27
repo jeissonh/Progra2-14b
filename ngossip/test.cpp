@@ -226,7 +226,7 @@ TEST_CASE("compositorial")
 
 TEST_CASE("cube")
 {
-	REQUIRE( is_cube(0) == false );
+    REQUIRE( is_cube(0) );
 	REQUIRE( is_cube(1) );
 	REQUIRE( is_cube(8) );
 	REQUIRE( is_cube(27) );

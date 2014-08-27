@@ -291,6 +291,12 @@ bool is_compositorial(longnum num){
 
 bool is_cube(longnum num)
 {
+    for( longnum i = 0; i <= num; i++)
+    {
+        longnum cuadrado = i*i;
+        if (num == cuadrado * i)
+            return true;
+    }
     return false;
 }
 
