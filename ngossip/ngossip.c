@@ -457,7 +457,30 @@ bool is_repunit(longnum num)
 
 bool is_repdigit(longnum num)
 {
-	return false;
+    bool soy_repdigit = false;
+    if(num == 0)
+    {
+        return soy_repdigit;
+    }
+    longnum cociente = num / 10;
+    longnum residuo = num % 10;
+    longnum primer_numero = residuo;
+    while(residuo == primer_numero && cociente != 0)
+    {
+        residuo = cociente % 10;
+        cociente = cociente / 10;
+    }
+
+    if(residuo != primer_numero)
+    {
+        return soy_repdigit;
+    }
+    if(cociente == 0)
+    {
+        soy_repdigit = true;
+    }
+
+    return soy_repdigit;
 }
 
 bool is_smith(longnum num)
