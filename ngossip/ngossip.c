@@ -291,6 +291,12 @@ bool is_compositorial(longnum num){
 
 bool is_cube(longnum num)
 {
+    for( longnum i = 0; i <= num; i++)
+    {
+        longnum cuadrado = i*i;
+        if (num == cuadrado * i)
+            return true;
+    }
     return false;
 }
 
@@ -384,6 +390,18 @@ bool is_odious(longnum num)
 
 bool is_palindrome(longnum num)
 {
+    longnum tempNum,temp,nuevoNum,i;
+    tempNum = num;
+    temp = 0;
+    nuevoNum = 0;
+    for(i = tempNum;i > 0;i++)
+    {
+        temp = tempNum % 10;
+        nuevoNum = (nuevoNum * 10) + remp;
+        temp = temp / 10;
+    }
+    if(num == nuevoNum)
+        return true;
     return false;
 }
 
@@ -508,6 +526,14 @@ bool is_tetrahedral(longnum num)
 
 bool is_triangular(longnum num)
 {
+    longnum temp,i;
+    temp = 0;
+    for(i = 1; i < num; i++)
+    {
+        temp = i * (i + 1);
+        if(temp == num)
+            return true;
+    }
     return false;
 }
 
@@ -601,7 +627,38 @@ bool is_ecci1(longnum num)
 
 bool is_ecci2(longnum num)
 {
+    if (num<=1){
+        return false;
+    }
+
+    longnum count=0;
+
+    for(longnum i=1;i<num;i++)
+    {
+        if(num%i==0)
+        {
+        count++;
+        }
+    }
+
+    longnum total=0;
+
+    while(num/10 != 0){
+        total+=num%10;
+        num=num/10;
+
+    }
+    if(num/10==0){
+        total+=num%10;
+    }
+
+    if(total==count){
+        return true;
+    }else{
     return false;
+   }
+
+
 }
 
 
