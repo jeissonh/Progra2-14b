@@ -528,7 +528,7 @@ bool is_triangular(longnum num)
 {
     longnum nuevoNum,temp,i;
     temp = 0;
-    nuevoNum = num * 2,
+    nuevoNum = num * 2;
     for(i = 1; i < num; i++)
     {
         temp = i * (i + 1);
