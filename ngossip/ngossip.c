@@ -438,8 +438,6 @@ bool is_primorial(longnum num)
 bool is_pronic(longnum num)
 {
 
-    return false;
-
 	if ( num == 2)
 		return true;
 	for (longnum i = 1; i<= (num/2); i++){
