@@ -581,6 +581,16 @@ bool is_parasite(longnum num)
 
 bool is_easy_to_remember(longnum num)
 {
+	if ( num >= 10){
+		longnum j=0;
+		longnum num2=num;
+		while (num2 != 0){
+			j=j+(num2 % 10);
+			num2=(num2 / 10);
+		}
+		if (num % j == 0)
+			return true;
+	}
     return false;
 }
 
