@@ -117,26 +117,90 @@ bool is_carmichael(longnum num)
 	return false;
 }
 
-bool is_catalan(longnum num)
-{
-	return false;
+bool is_catalan(longnum num){
+
+    longnum i, j, k, n, producto, pre_numerador, denominador, pre_denominador1, pre_denominador2, numerador, denominador1, denominador2;
+
+    if (num == 0) {return false;}
+
+    n = 1;
+
+    while (n <= num){
+
+    pre_numerador = (2 * n);
+    pre_denominador1 = (n + 1);
+    pre_denominador2 = n;
+    numerador = 1;
+    denominador1 = 1;
+    denominador2 = 1;
+
+    for (i = 1; i <= pre_numerador; i++){
+        numerador *= i;
+    }
+
+    for (j = 1; j <= pre_denominador1; j++){
+        denominador1 *= j;
+    }
+
+    for (k = 1; k <= pre_denominador2; k++){
+        denominador2 *= k;
+    }
+
+    denominador = denominador1 * denominador2;
+    if (denominador != 0) {producto = numerador / denominador;}
+
+    if (producto == num) {
+        return true;
+    }
+    else {
+        n++;
+    }
+
+    }
+
+    return false;
+
 }
 
 bool is_composite(longnum num)
 {
+    longnum i;
 	if ( num <= 3 ) return false;
 	if ( num % 2 == 0 ) return true;
 	longnum square_root = sqrt(num);
-	for (longnum i = 3; i <= square_root; i += 2 )
+	for (i = 3; i <= square_root; i += 2 )
 		if ( num % i == 0 )
 			return true;
 
 	return false;
 }
 
-bool is_compositorial(longnum num)
-{
-	return false;
+bool is_compositorial(longnum num){
+
+    longnum n, producto;
+
+    if (num == 0) {return false;}
+
+    producto = 1;
+    n = 4;
+
+    while (producto < num) {
+
+        if (is_composite(n) == true) {
+            producto *= n;
+        }
+
+        n++;
+
+    }
+
+    if (producto == num) {
+        return true;
+    }
+    else{
+        return false;
+    }
+
 }
 
 bool is_cube(longnum num)
