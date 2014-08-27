@@ -1137,12 +1137,30 @@ TEST_CASE("ecci2")
 	REQUIRE( is_ecci2(0) == false );
 	REQUIRE( is_ecci2(1) == false );
 	REQUIRE( is_ecci2(2) == false );
-	REQUIRE( is_ecci2(20) == false );
+    REQUIRE( is_ecci2(3) == false );
+    REQUIRE( is_ecci2(4) == false );
+    REQUIRE( is_ecci2(5) == false );
+    REQUIRE( is_ecci2(6) == false );
+    REQUIRE( is_ecci2(7) == false );
+    REQUIRE( is_ecci2(8) == false );
+    REQUIRE( is_ecci2(9) == false );
+    REQUIRE( is_ecci2(10) == false );
+    REQUIRE( is_ecci2(11) == false );
+    REQUIRE( is_ecci2(12) == false );
+    REQUIRE( is_ecci2(13) == false );
+    REQUIRE( is_ecci2(14) == false );
+    REQUIRE( is_ecci2(15) == false );
+    REQUIRE( is_ecci2(16) == false );
+    REQUIRE( is_ecci2(17) == false );
+    REQUIRE( is_ecci2(18) == false );
+    REQUIRE( is_ecci2(19) == false );
+    REQUIRE( is_ecci2(20) == false );
 	REQUIRE( is_ecci2(21) );
 	REQUIRE( is_ecci2(22) == false );
 	REQUIRE( is_ecci2(32) );
     REQUIRE( is_ecci2(1789) == false );
     REQUIRE( is_ecci2(1995) == false );
+    REQUIRE( is_ecci2(1819) == false );
 
 }
 

@@ -22,6 +22,7 @@
 
 # QtCreator config files
 *.user*
+build*/
 
 # Common Unix executables
 test
