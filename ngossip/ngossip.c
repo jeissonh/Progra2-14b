@@ -312,10 +312,7 @@ bool is_even(longnum num)
 
 bool is_evil(longnum num)
 {
-
-    return false;
-
-	longnum n_unos = 0;
+    longnum n_unos = 0;
 	while (num > 0)
 	{
 		if (num % 2 == 1)
@@ -549,10 +546,7 @@ bool is_weird(longnum num)
 
 bool is_fermat(longnum num)
 {
-
-    return false;
-
-	longnum i = 0;
+    longnum i = 0;
 	longnum current_fermat = 0;
 	while (num >= current_fermat)
 	{
