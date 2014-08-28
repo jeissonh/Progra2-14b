@@ -126,61 +126,56 @@ longnum get_cake(double num)
 
 bool is_cake(longnum num)
 {
-    bool soy_cake = false;
-        double raiz_cubica = pow(num, (1.0/3.0));
-        longnum raiz = (longnum)raiz_cubica;
-        if(num == get_cake(raiz))
-        {
-            soy_cake = true;
-        }
-        else
-        {
-            longnum mayor = (raiz * 2) + 1;
-            longnum menor = raiz;
-            longnum medio = ((mayor - menor) / 2) + menor;
-            longnum posible_cake = get_cake(medio);
+	bool soy_cake = false;
+	double raiz_cubica = pow(num, (1.0/3.0));
+	longnum raiz = (longnum)raiz_cubica;
+	if(num == get_cake(raiz))
+	{
+		soy_cake = true;
+	}
+	else
+	{
+		longnum mayor = (raiz * 2) + 1;
+		longnum menor = raiz;
+		longnum medio = ((mayor - menor) / 2) + menor;
+		longnum posible_cake = get_cake(medio);
 
-            while (num != posible_cake && medio < mayor)
-            {
+		while (num != posible_cake && medio < mayor)
+		{
 
-                if(posible_cake > num)
-                {
-                    mayor = medio;
-                }
-                else
-                {
-                    menor = medio;
-                }
+			if(posible_cake > num)
+			{
+				mayor = medio;
+			}
+			else
+			{
+				menor = medio;
+			}
 
-                medio = ((mayor - menor) / 2) + menor;
+			medio = ((mayor - menor) / 2) + menor;
 
-                if(medio == menor)
-                {
-                medio = medio + 1;
-                }
+			if(medio == menor)
+			{
+			medio = medio + 1;
+			}
 
-                posible_cake = get_cake(medio);
-            }
+			posible_cake = get_cake(medio);
+		}
 
-            if(num == posible_cake)
-            {
+		if(num == posible_cake)
+		{
 
-                soy_cake = true;
-            }
-        }
+			soy_cake = true;
+		}
+	}
 
-        return soy_cake;
+	return soy_cake;
 }
 
 bool is_carmichael(longnum num)
 {
     return false;
 }
-
-
-/*bool is_catalan(longnum num)
-{
-    return false;*/
 
 bool is_catalan(longnum num){
 
@@ -230,8 +225,6 @@ bool is_catalan(longnum num){
 
 bool is_composite(longnum num)
 {
-
-
     if ( num <= 3 ) return false;
     if ( num % 2 == 0 ) return true;
     longnum square_root = sqrt(num);
@@ -396,6 +389,7 @@ bool is_odious(longnum num)
 
 bool is_palindrome(longnum num)
 {
+/*
     longnum tempNum,temp,nuevoNum,i;
     tempNum = num;
     temp = 0;
@@ -408,6 +402,7 @@ bool is_palindrome(longnum num)
     }
     if(num == nuevoNum)
         return true;
+*/
     return false;
 }
 
@@ -428,7 +423,16 @@ bool is_perfect(longnum num)
 
 bool is_power_of_2(longnum num)
 {
-    return false;
+	if ( num == 0 ) return false;
+	if ( num == 1 ) return true; // Because 2^0 = 1
+	if ( num % 2 != 0 ) return false;
+	while( num != 1 ) {
+		if( num % 2 == 0 ) {
+			num = num / 2;
+		}
+		else return false;
+	}
+	return true;
 }
 
 bool is_powerful(longnum num)
@@ -461,7 +465,6 @@ bool is_primorial(longnum num)
 
 bool is_pronic(longnum num)
 {
-
 	if ( num == 2)
 		return true;
 	for (longnum i = 1; i<= (num/2); i++){
@@ -596,7 +599,24 @@ bool is_hypotenuse(longnum num)
 
 bool is_persistent(longnum num)
 {
-    return false;
+	// All positive integers lower than 39 do not have a greater persistence than their digits.
+	if( num < 39 ) return false;
+	if( num % 10 == 0) return false;
+	longnum persistence = 0;
+	// This is used for comparing the original number with its persistence.
+	longnum original_num = num;
+	while( num / 10 != 0 ) {
+		longnum multiplication = 1;
+		while( num != 0 ) {
+			multiplication = multiplication * (num % 10);
+			num = num / 10;
+		}
+		persistence++;
+		if( persistence > count_digits( original_num ) ) return true;
+		num = multiplication;
+	}
+
+	return false;
 }
 
 bool is_product_perfect(longnum num)
@@ -693,11 +713,6 @@ bool is_ecci2(longnum num)
 
 }
 
-
-
-
-
-
 int count_digits(longnum num)
 {
 	// Zero has 1 digit also
@@ -709,10 +724,6 @@ int count_digits(longnum num)
 
 	return count;
 }
-
-
-
-
 
 #ifdef __cplusplus
 }
