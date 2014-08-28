@@ -416,20 +416,18 @@ bool is_odious(longnum num)
 
 bool is_palindrome(longnum num)
 {
-/*
     longnum tempNum,temp,nuevoNum,i;
     tempNum = num;
     temp = 0;
     nuevoNum = 0;
-    for(i = tempNum;i > 0;i++)
+    for(i = 0;tempNum > 0;i++)
     {
         temp = tempNum % 10;
         nuevoNum = (nuevoNum * 10) + temp;
-        temp = temp / 10;
+        tempNum = tempNum / 10;
     }
     if(num == nuevoNum)
         return true;
-*/
     return false;
 }
 
