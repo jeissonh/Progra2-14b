@@ -705,11 +705,13 @@ bool is_ecci1(longnum num)
 }
 
 bool is_ecci2(longnum num)
-{
+{   //Returns false in case of num== 0 || 1
+
     if (num<=1){
         return false;
     }
 
+    //Counts number of proper divisors
     longnum count=0;
 
     for(longnum i=1;i<num;i++)
@@ -720,6 +722,7 @@ bool is_ecci2(longnum num)
         }
     }
 
+    //Sum of digits
     longnum total=0;
 
     while(num/10 != 0){
@@ -730,7 +733,7 @@ bool is_ecci2(longnum num)
     if(num/10==0){
         total+=num%10;
     }
-
+    //Compares the two results
     if(total==count){
         return true;
     }else{
