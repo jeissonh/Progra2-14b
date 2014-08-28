@@ -428,8 +428,22 @@ bool is_perfect(longnum num)
 
 bool is_power_of_2(longnum num)
 {
+<<<<<<< HEAD
     return false;
 }
+=======
+	if ( num == 0 ) return false;
+	if ( num == 1 ) return true; // Because 2^0 = 1
+	if ( num % 2 != 0 ) return false; 
+	while( num != 1 ) {
+		if( num % 2 == 0 ) {
+			num = num / 2;
+		}
+		else return false;
+	}
+	return true;
+} 
+>>>>>>> 416dc995fe05d3743a1f0a85ae9aac8529a11514
 
 bool is_powerful(longnum num)
 {
@@ -594,8 +608,37 @@ bool is_hypotenuse(longnum num)
     return false;
 }
 
+longnum count_digits(longnum num)
+{
+	// Zero has 1 digit also
+	longnum count = 1;
+	// Each time the original number can be divided by 10, a digit is found
+	for ( num /= 10; num != 0; num /= 10 )
+	++count;
+	return count;
+}
+
 bool is_persistent(longnum num)
 {
+<<<<<<< HEAD
+=======
+	// All positive integers lower than 39 do not have a greater persistence than their digits.
+	if( num < 39 ) return false;
+	if( num % 10 == 0) return false; 
+	longnum persistence = 0;
+	// This is used for comparing the original number with its persistence.
+	longnum original_num = num; 
+	while( num / 10 != 0 ) {
+		longnum multiplication = 1;
+		while( num != 0 ) {
+			multiplication = multiplication * (num % 10);
+			num = num / 10; 
+		}
+		persistence++;
+		if( persistence > count_digits( original_num ) ) return true;
+		num = multiplication;
+	}
+>>>>>>> 416dc995fe05d3743a1f0a85ae9aac8529a11514
     return false;
 }
 
@@ -665,6 +708,7 @@ bool is_ecci2(longnum num)
 
 }
 
+<<<<<<< HEAD
 
 
 
@@ -686,6 +730,8 @@ int count_digits(longnum num)
 
 
 
+=======
+>>>>>>> 416dc995fe05d3743a1f0a85ae9aac8529a11514
 #ifdef __cplusplus
 }
 #endif
