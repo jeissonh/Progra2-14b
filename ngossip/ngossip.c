@@ -403,7 +403,7 @@ bool is_palindrome(longnum num)
     for(i = tempNum;i > 0;i++)
     {
         temp = tempNum % 10;
-        nuevoNum = (nuevoNum * 10) + remp;
+        nuevoNum = (nuevoNum * 10) + temp;
         temp = temp / 10;
     }
     if(num == nuevoNum)
@@ -434,7 +434,7 @@ bool is_power_of_2(longnum num)
 =======
 	if ( num == 0 ) return false;
 	if ( num == 1 ) return true; // Because 2^0 = 1
-	if ( num % 2 != 0 ) return false; 
+	if ( num % 2 != 0 ) return false;
 	while( num != 1 ) {
 		if( num % 2 == 0 ) {
 			num = num / 2;
@@ -442,7 +442,7 @@ bool is_power_of_2(longnum num)
 		else return false;
 	}
 	return true;
-} 
+}
 >>>>>>> 416dc995fe05d3743a1f0a85ae9aac8529a11514
 
 bool is_powerful(longnum num)
@@ -624,15 +624,15 @@ bool is_persistent(longnum num)
 =======
 	// All positive integers lower than 39 do not have a greater persistence than their digits.
 	if( num < 39 ) return false;
-	if( num % 10 == 0) return false; 
+	if( num % 10 == 0) return false;
 	longnum persistence = 0;
 	// This is used for comparing the original number with its persistence.
-	longnum original_num = num; 
+	longnum original_num = num;
 	while( num / 10 != 0 ) {
 		longnum multiplication = 1;
 		while( num != 0 ) {
 			multiplication = multiplication * (num % 10);
-			num = num / 10; 
+			num = num / 10;
 		}
 		persistence++;
 		if( persistence > count_digits( original_num ) ) return true;
