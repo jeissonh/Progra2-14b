@@ -179,7 +179,7 @@ bool is_lazy_caterer(longnum num);
 bool is_lucky(longnum num);
 
 /**
-	A number of the form 2p - 1 is called a Mersenne number if p is prime.
+    A number of the form 2^p - 1 is called a Mersenne number if p is prime.
 	It was believed many years ago, that all Mersenne numbers are prime. This is not so, thus there is a separate entry for Mersenne prime numbers.
 	First ten: 3, 7, 31, 127, 2047, 8191, 131071, 524287, 8388607, 536870911
 	There are 6 Mersenne numbers below 10,000.
