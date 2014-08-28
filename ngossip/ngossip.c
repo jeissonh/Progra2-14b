@@ -403,7 +403,7 @@ bool is_palindrome(longnum num)
     for(i = tempNum;i > 0;i++)
     {
         temp = tempNum % 10;
-        nuevoNum = (nuevoNum * 10) + remp;
+        nuevoNum = (nuevoNum * 10) + temp;
         temp = temp / 10;
     }
     if(num == nuevoNum)
@@ -610,17 +610,45 @@ bool is_parasite(longnum num)
 }
 
 bool is_easy_to_remember(longnum num)
-{
-	if ( num >= 10){
-		longnum j=0;
-		longnum num2=num;
-		while (num2 != 0){
-			j=j+(num2 % 10);
-			num2=(num2 / 10);
-		}
-		if (num % j == 0)
-			return true;
+{	
+	longnum num2 = num;
+	longnum contador1 = 0;
+	longnum contador2 = 0;
+	longnum cuenta1 = 0;
+	longnum cuenta2 = 0;
+	longnum t=0;
+	while (num2 != 0){  //Prueba si los dígitos son consecutivos
+		contador1 = (num2%10);
+		num2 = (num2/10);
+		if (num2 >0 && (num2%10) == contador1-1)
+			cuenta1++;
+		if (num2 >0 && (num2%10) == contador1+1)
+			cuenta2++;
+		t++;
 	}
+	if (cuenta1 == (t-1) || cuenta2 == (t-1))
+		return true;
+	contador1 = 0;
+	cuenta1 =0;
+	cuenta2=-1;
+	num2 =  num;
+	while ( num2 != 0){  //Prueba hay series de numeros repetidos consecutivamente
+		cuenta1 = (num2%10);
+		num2 = (num2/10);
+		if (num2 != 0 && (num2%10) != cuenta1){
+			longnum temp1 = (num2%10);
+			longnum temp2 = (num2/10);
+			if ((temp2/10) != 0 && (temp2%10) != temp1)
+				return false;
+		}
+		if (cuenta1 != cuenta2){
+			cuenta2 = cuenta1;
+			contador2++;
+		}
+		contador1++;
+	}
+	if (sqrt(t) >= contador2)
+		return true;
     return false;
 }
 
