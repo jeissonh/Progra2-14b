@@ -387,6 +387,18 @@ bool is_odious(longnum num)
 
 bool is_palindrome(longnum num)
 {
+    longnum tempNum,temp,nuevoNum,i;
+    tempNum = num;
+    temp = 0;
+    nuevoNum = 0;
+    for(i = tempNum;i > 0;i++)
+    {
+        temp = tempNum % 10;
+        nuevoNum = (nuevoNum * 10) + remp;
+        temp = temp / 10;
+    }
+    if(num == nuevoNum)
+        return true;
     return false;
 }
 
@@ -511,6 +523,15 @@ bool is_tetrahedral(longnum num)
 
 bool is_triangular(longnum num)
 {
+    longnum nuevoNum,temp,i;
+    temp = 0;
+    nuevoNum = num * 2;
+    for(i = 1; i < num; i++)
+    {
+        temp = i * (i + 1);
+        if(temp == nuevoNum)
+            return true;
+    }
     return false;
 }
 
