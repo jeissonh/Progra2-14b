@@ -327,6 +327,15 @@ bool is_evil(longnum num)
 
 bool is_factorial(longnum num)
 {
+    if(num == 0)return false;
+    int c = 1;
+    longnum aux = num;
+    while(num%c == 0)
+    {
+        aux/=c;
+        if(aux==1)return true;
+        ++c;
+    }
     return false;
 }
 
