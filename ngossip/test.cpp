@@ -1331,7 +1331,7 @@ TEST_CASE("ecci2")
     REQUIRE( is_ecci2(32) );
     REQUIRE( is_ecci2(1349) == false );
     REQUIRE( is_ecci2(1313) == false );
->   REQUIRE( is_ecci2(1789) == false );
+    REQUIRE( is_ecci2(1789) == false );
     REQUIRE( is_ecci2(1819) == false );
     REQUIRE( is_ecci2(1995) == false );
 
