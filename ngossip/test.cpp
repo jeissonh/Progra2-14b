@@ -1388,7 +1388,7 @@ TEST_CASE("fermat")
 	REQUIRE( is_fermat(1789) == false );
     REQUIRE( is_fermat(1995) == false );
     REQUIRE( is_fermat(2014) == false );
-	REQUIRE( is_fermat(8321) );
+    REQUIRE( is_fermat(8321) == false );
     REQUIRE( is_fermat(8911) == false );
 //	REQUIRE( is_fermat(4294967297llu) );
 //	REQUIRE( is_fermat(4294967298llu) == false );
