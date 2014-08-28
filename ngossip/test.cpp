@@ -23,6 +23,8 @@ TEST_CASE("abundant")
 	REQUIRE( is_abundant(48) );
 	REQUIRE( is_abundant(50) == false );
 	REQUIRE( is_abundant(54) );
+	REQUIRE( is_abundant(60) );
+	REQUIRE( is_abundant(61) == false );
 	REQUIRE( is_abundant(1001) == false );
 }
 
@@ -45,6 +47,8 @@ TEST_CASE("amicable")
 	REQUIRE( is_amicable(5564) );
 	REQUIRE( is_amicable(6232) );
 	REQUIRE( is_amicable(6368) );
+	REQUIRE( is_amicable(10744) );
+	REQUIRE( is_amicable(10745) == false );
 }
 
 TEST_CASE("apocalyptic_power")
@@ -66,6 +70,7 @@ TEST_CASE("apocalyptic_power")
 	REQUIRE( is_apocalyptic_power(244) == false );
 	REQUIRE( is_apocalyptic_power(245) );
 	REQUIRE( is_apocalyptic_power(247) );
+	REQUIRE( is_apocalyptic_power(251) == false );
 }
 
 TEST_CASE("aspiring")
@@ -81,6 +86,8 @@ TEST_CASE("aspiring")
 	REQUIRE( is_aspiring(608) );
 	REQUIRE( is_aspiring(650) );
 	REQUIRE( is_aspiring(652) );
+	REQUIRE( is_aspiring(675) );
+	REQUIRE( is_aspiring(676) == false );
 }
 
 TEST_CASE("automorphic")
@@ -96,7 +103,7 @@ TEST_CASE("automorphic")
 	REQUIRE( is_automorphic(9376) );
 	REQUIRE( is_automorphic(90625) );
 	REQUIRE( is_automorphic(109376) );
-
+	REQUIRE( is_automorphic(109377) == false );
 }
 
 TEST_CASE("cake")
@@ -112,6 +119,8 @@ TEST_CASE("cake")
 	REQUIRE( is_cake(93) );
 	REQUIRE( is_cake(130) );
 	REQUIRE( is_cake(176) );
+	REQUIRE( is_cake(232) );
+	REQUIRE( is_cake(233) == false );
 }
 
 TEST_CASE("carmichael")
@@ -127,6 +136,8 @@ TEST_CASE("carmichael")
 	REQUIRE( is_carmichael(10585) );
 	REQUIRE( is_carmichael(15841) );
 	REQUIRE( is_carmichael(29341) );
+	REQUIRE( is_carmichael(41041) );
+	REQUIRE( is_carmichael(41042) == false );
 }
 
 TEST_CASE("catalan")
@@ -142,6 +153,8 @@ TEST_CASE("catalan")
 	REQUIRE( is_catalan(1430) );
 	REQUIRE( is_catalan(4862) );
 	REQUIRE( is_catalan(16796) );
+	REQUIRE( is_catalan(58786) );
+	REQUIRE( is_catalan(58787) == false );
 }
 
 TEST_CASE("composite")
@@ -166,6 +179,8 @@ TEST_CASE("composite")
 	REQUIRE( is_composite(17) == false );
 	REQUIRE( is_composite(18) );
 	REQUIRE( is_composite(19) == false );
+	REQUIRE( is_composite(22) );
+	REQUIRE( is_composite(23) == false );
 	REQUIRE( is_composite(105) );
 	REQUIRE( is_composite(1001) );
 }
@@ -183,6 +198,8 @@ TEST_CASE("compositorial")
 	REQUIRE( is_compositorial(43545600) );
 	REQUIRE( is_compositorial(696729600) );
 	REQUIRE( is_compositorial(12541132800) );
+	REQUIRE( is_compositorial(250822656000) );
+	REQUIRE( is_compositorial(250822656001) == false );
 }
 
 TEST_CASE("cube")
@@ -198,6 +215,8 @@ TEST_CASE("cube")
 	REQUIRE( is_cube(512) );
 	REQUIRE( is_cube(729) );
 	REQUIRE( is_cube(1000) );
+	REQUIRE( is_cube(1331) );
+	REQUIRE( is_cube(1332) == false );
 }
 
 TEST_CASE("deficient")
@@ -213,6 +232,8 @@ TEST_CASE("deficient")
 	REQUIRE( is_deficient(9) );
 	REQUIRE( is_deficient(10) );
 	REQUIRE( is_deficient(11) );
+	REQUIRE( is_deficient(17) );
+	REQUIRE( is_deficient(18) == false );
 }
 
 TEST_CASE("even")
@@ -228,6 +249,8 @@ TEST_CASE("even")
 	REQUIRE( is_even(16) );
 	REQUIRE( is_even(18) );
 	REQUIRE( is_even(20) );
+	REQUIRE( is_even(22) );
+	REQUIRE( is_even(23) == false );
 }
 
 TEST_CASE("evil")
@@ -243,6 +266,8 @@ TEST_CASE("evil")
 	REQUIRE( is_evil(17) );
 	REQUIRE( is_evil(18) );
 	REQUIRE( is_evil(20) );
+	REQUIRE( is_evil(24) );
+	REQUIRE( is_evil(25) == false );
 }
 
 TEST_CASE("factorial")
@@ -258,6 +283,8 @@ TEST_CASE("factorial")
 	REQUIRE( is_factorial(40320) );
 	REQUIRE( is_factorial(362880) );
 	REQUIRE( is_factorial(3628800) );
+	REQUIRE( is_factorial(39916800) );
+	REQUIRE( is_factorial(39916801) == false );
 }
 
 TEST_CASE("fibonacci")
@@ -273,6 +300,8 @@ TEST_CASE("fibonacci")
 	REQUIRE( is_fibonacci(21) );
 	REQUIRE( is_fibonacci(34) );
 	REQUIRE( is_fibonacci(55) );
+	REQUIRE( is_fibonacci(89) );
+	REQUIRE( is_fibonacci(90) == false );
 }
 
 TEST_CASE("google")
@@ -280,6 +309,7 @@ TEST_CASE("google")
 	REQUIRE( is_google(0) == false );
 	REQUIRE( is_google(2) );
 	REQUIRE( is_google(71) );
+	REQUIRE( is_google(72) == false );
 	REQUIRE( is_google(271) );
 	REQUIRE( is_google(4523) );
 	REQUIRE( is_google(74713) );
@@ -344,6 +374,8 @@ TEST_CASE("happy")
 	REQUIRE( is_happy(709) );
 	REQUIRE( is_happy(970) );
 	REQUIRE( is_happy(907) );
+	REQUIRE( is_happy(1009) );
+	REQUIRE( is_happy(1010) == false );
 }
 
 TEST_CASE("hungry")
@@ -354,6 +386,7 @@ TEST_CASE("hungry")
 	REQUIRE( is_hungry(74) );
 	REQUIRE( is_hungry(144) );
 	REQUIRE( is_hungry(144) );
+	REQUIRE( is_hungry(145) == false );
 	REQUIRE( is_hungry(2003) );
 	REQUIRE( is_hungry(2003) );
 	REQUIRE( is_hungry(37929) );
@@ -373,6 +406,7 @@ TEST_CASE("lazy_caterer")
 	REQUIRE( is_lazy_caterer(29) );
 	REQUIRE( is_lazy_caterer(37) );
 	REQUIRE( is_lazy_caterer(46) );
+	REQUIRE( is_lazy_caterer(47) == false );
 	REQUIRE( is_lazy_caterer(56) );
 }
 
@@ -389,6 +423,8 @@ TEST_CASE("lucky")
 	REQUIRE( is_lucky(25) );
 	REQUIRE( is_lucky(31) );
 	REQUIRE( is_lucky(33) );
+	REQUIRE( is_lucky(37) );
+	REQUIRE( is_lucky(38) == false );
 }
 
 TEST_CASE("mersenne")
@@ -398,6 +434,8 @@ TEST_CASE("mersenne")
 	REQUIRE( is_mersenne(7) );
 	REQUIRE( is_mersenne(31) );
 	REQUIRE( is_mersenne(127) );
+	REQUIRE( is_mersenne(255) );
+	REQUIRE( is_mersenne(256) == false );
 	REQUIRE( is_mersenne(2047) );
 	REQUIRE( is_mersenne(8191) );
 	REQUIRE( is_mersenne(131071) );
@@ -412,6 +450,8 @@ TEST_CASE("mersenne_prime")
 	REQUIRE( is_mersenne_prime(3) );
 	REQUIRE( is_mersenne_prime(7) );
 	REQUIRE( is_mersenne_prime(31) );
+	REQUIRE( is_mersenne_prime(61) );
+	REQUIRE( is_mersenne_prime(62) == false );
 	REQUIRE( is_mersenne_prime(127) );
 	REQUIRE( is_mersenne_prime(8191) );
 	REQUIRE( is_mersenne_prime(131071) );
@@ -434,6 +474,8 @@ TEST_CASE("narcissistic")
 	REQUIRE( is_narcissistic(8) );
 	REQUIRE( is_narcissistic(9) );
 	REQUIRE( is_narcissistic(153) );
+	REQUIRE( is_narcissistic(371) );
+	REQUIRE( is_narcissistic(372) == false );
 }
 
 TEST_CASE("odd")
@@ -449,6 +491,8 @@ TEST_CASE("odd")
 	REQUIRE( is_odd(15) );
 	REQUIRE( is_odd(17) );
 	REQUIRE( is_odd(19) );
+	REQUIRE( is_odd(21) );
+	REQUIRE( is_odd(22) == false );
 }
 
 TEST_CASE("odious")
@@ -464,6 +508,8 @@ TEST_CASE("odious")
 	REQUIRE( is_odious(14) );
 	REQUIRE( is_odious(16) );
 	REQUIRE( is_odious(19) );
+	REQUIRE( is_odious(22) );
+	REQUIRE( is_odious(23) == false );
 }
 
 TEST_CASE("palindrome")
@@ -481,6 +527,8 @@ TEST_CASE("palindrome")
 	REQUIRE( is_palindrome(11) );
 	REQUIRE( is_palindrome(101) );
 	REQUIRE( is_palindrome(121) );
+	REQUIRE( is_palindrome(464) );
+	REQUIRE( is_palindrome(465) == false );
 	REQUIRE( is_palindrome(7887) );
 	REQUIRE( is_palindrome(45054) );
 }
@@ -498,6 +546,8 @@ TEST_CASE("palindromic_prime")
 	REQUIRE( is_palindromic_prime(151) );
 	REQUIRE( is_palindromic_prime(181) );
 	REQUIRE( is_palindromic_prime(191) );
+	REQUIRE( is_palindromic_prime(313) );
+	REQUIRE( is_palindromic_prime(314) == false );
 }
 
 TEST_CASE("pentagonal")
@@ -513,6 +563,8 @@ TEST_CASE("pentagonal")
 	REQUIRE( is_pentagonal(92) );
 	REQUIRE( is_pentagonal(117) );
 	REQUIRE( is_pentagonal(145) );
+	REQUIRE( is_pentagonal(176) );
+	REQUIRE( is_pentagonal(177) == false );
 }
 
 TEST_CASE("perfect")
@@ -523,6 +575,7 @@ TEST_CASE("perfect")
 	REQUIRE( is_perfect(496) );
 	REQUIRE( is_perfect(8128) );
 	REQUIRE( is_perfect(33550336) );
+	REQUIRE( is_perfect(44533434) == false );
 	REQUIRE( is_perfect(8589869056llu) );
 	REQUIRE( is_perfect(137438691328llu) );
 	REQUIRE( is_perfect(2305843008139952128llu) );
@@ -543,6 +596,13 @@ TEST_CASE("power_of_2")
 	REQUIRE( is_power_of_2(128) );
 	REQUIRE( is_power_of_2(256) );
 	REQUIRE( is_power_of_2(512) );
+	REQUIRE( is_power_of_2(1024) );
+	REQUIRE( is_power_of_2(2048) );
+	REQUIRE( is_power_of_2(4096) );
+	REQUIRE( is_power_of_2(8192) );
+	REQUIRE( is_power_of_2(16384) );
+	REQUIRE( is_power_of_2(32768) );
+	REQUIRE( is_power_of_2(65536) );
 }
 
 TEST_CASE("powerful")
@@ -573,6 +633,7 @@ TEST_CASE("practical")
 	REQUIRE( is_practical(18) );
 	REQUIRE( is_practical(20) );
 	REQUIRE( is_practical(24) );
+	REQUIRE( is_practical(25) == false );
 }
 
 TEST_CASE("prime")
@@ -591,6 +652,8 @@ TEST_CASE("prime")
 	REQUIRE( is_prime(19) );
 	REQUIRE( is_prime(23) );
 	REQUIRE( is_prime(29) );
+	REQUIRE( is_prime(31) );
+	REQUIRE( is_prime(32) == false );
 	REQUIRE( is_prime(100000000000001llu) == false );
 }
 
@@ -603,6 +666,7 @@ TEST_CASE("primorial")
 	REQUIRE( is_primorial(210) );
 	REQUIRE( is_primorial(2310) );
 	REQUIRE( is_primorial(30030) );
+	REQUIRE( is_primorial(30031) == false );
 	REQUIRE( is_primorial(510510llu) );
 	REQUIRE( is_primorial(9699690llu) );
 	REQUIRE( is_primorial(223092870llu) );
@@ -622,6 +686,8 @@ TEST_CASE("pronic")
 	REQUIRE( is_pronic(72) );
 	REQUIRE( is_pronic(90) );
 	REQUIRE( is_pronic(110) );
+	REQUIRE( is_pronic(132) );
+	REQUIRE( is_pronic(133) == false );
 }
 
 TEST_CASE("repunit")
@@ -637,6 +703,8 @@ TEST_CASE("repunit")
 	REQUIRE( is_repunit(11111111) );
 	REQUIRE( is_repunit(111111111) );
 	REQUIRE( is_repunit(1111111111) );
+	REQUIRE( is_repunit(11111111111) );
+	REQUIRE( is_repunit(11111111112) == false );
 }
 
 TEST_CASE("smith")
@@ -652,6 +720,8 @@ TEST_CASE("smith")
 	REQUIRE( is_smith(166) );
 	REQUIRE( is_smith(202) );
 	REQUIRE( is_smith(265) );
+	REQUIRE( is_smith(274) );
+	REQUIRE( is_smith(275) == false );
 }
 
 TEST_CASE("sociable")
@@ -667,6 +737,7 @@ TEST_CASE("sociable")
 	REQUIRE( is_sociable(19116) );
 	REQUIRE( is_sociable(19916) );
 	REQUIRE( is_sociable(22744) );
+	REQUIRE( is_sociable(22745) == false );
 }
 
 TEST_CASE("square")
@@ -682,6 +753,8 @@ TEST_CASE("square")
 	REQUIRE( is_square(64) );
 	REQUIRE( is_square(81) );
 	REQUIRE( is_square(100) );
+	REQUIRE( is_square(121) );
+	REQUIRE( is_square(122) == false );
 }
 
 TEST_CASE("square_free")
@@ -697,6 +770,8 @@ TEST_CASE("square_free")
 	REQUIRE( is_square_free(11) );
 	REQUIRE( is_square_free(13) );
 	REQUIRE( is_square_free(14) );
+	REQUIRE( is_square_free(15) );
+	REQUIRE( is_square_free(16) == false );
 }
 
 TEST_CASE("tetrahedral")
@@ -712,6 +787,8 @@ TEST_CASE("tetrahedral")
 	REQUIRE( is_tetrahedral(120) );
 	REQUIRE( is_tetrahedral(165) );
 	REQUIRE( is_tetrahedral(220) );
+	REQUIRE( is_tetrahedral(286) );
+	REQUIRE( is_tetrahedral(287) == false );
 }
 
 TEST_CASE("triangular")
@@ -727,6 +804,8 @@ TEST_CASE("triangular")
 	REQUIRE( is_triangular(36) );
 	REQUIRE( is_triangular(45) );
 	REQUIRE( is_triangular(55) );
+	REQUIRE( is_triangular(66) );
+	REQUIRE( is_triangular(67) == false );
 }
 
 TEST_CASE("twin")
@@ -742,6 +821,8 @@ TEST_CASE("twin")
 	REQUIRE( is_twin(29) );
 	REQUIRE( is_twin(31) );
 	REQUIRE( is_twin(41) );
+	REQUIRE( is_twin(59) );
+	REQUIRE( is_twin(60) == false );
 }
 
 TEST_CASE("ulam")
@@ -757,6 +838,8 @@ TEST_CASE("ulam")
 	REQUIRE( is_ulam(13) );
 	REQUIRE( is_ulam(16) );
 	REQUIRE( is_ulam(18) );
+	REQUIRE( is_ulam(26) );
+	REQUIRE( is_ulam(27) == false );
 }
 
 TEST_CASE("undulating")
@@ -772,6 +855,8 @@ TEST_CASE("undulating")
 	REQUIRE( is_undulating(171) );
 	REQUIRE( is_undulating(181) );
 	REQUIRE( is_undulating(191) );
+	REQUIRE( is_undulating(313) );
+	REQUIRE( is_undulating(314) == false );
 }
 
 TEST_CASE("untouchable")
@@ -787,6 +872,8 @@ TEST_CASE("untouchable")
 	REQUIRE( is_untouchable(146) );
 	REQUIRE( is_untouchable(162) );
 	REQUIRE( is_untouchable(188) );
+	REQUIRE( is_untouchable(206) );
+	REQUIRE( is_untouchable(210) == false );
 }
 
 TEST_CASE("vampire")
@@ -802,6 +889,8 @@ TEST_CASE("vampire")
 	REQUIRE( is_vampire(1435) );
 	REQUIRE( is_vampire(1503) );
 	REQUIRE( is_vampire(1530) );
+	REQUIRE( is_vampire(1827) );
+	REQUIRE( is_vampire(1828) == false );
 }
 
 TEST_CASE("weird")
@@ -817,6 +906,8 @@ TEST_CASE("weird")
 	REQUIRE( is_weird(10430) );
 	REQUIRE( is_weird(10570) );
 	REQUIRE( is_weird(10792) );
+	REQUIRE( is_weird(10990) );
+	REQUIRE( is_weird(10991) == false );
 }
 
 TEST_CASE("fermat")
@@ -828,6 +919,7 @@ TEST_CASE("fermat")
 	REQUIRE( is_fermat(257) );
 	REQUIRE( is_fermat(65537) );
 	REQUIRE( is_fermat(4294967297llu) );
+	REQUIRE( is_fermat(4294967298llu) == false );
 }
 
 TEST_CASE("hypotenuse")
@@ -880,15 +972,63 @@ TEST_CASE("hypotenuse")
 	REQUIRE( is_hypotenuse(281) );
 	REQUIRE( is_hypotenuse(289) );
 	REQUIRE( is_hypotenuse(293) );
+	REQUIRE( is_hypotenuse(305) );
+	REQUIRE( is_hypotenuse(306) == false );
 }
 
 TEST_CASE("persistent")
 {
 	REQUIRE( is_persistent(0) == false );
+	REQUIRE( is_persistent(1) == false );
+	REQUIRE( is_persistent(2) == false );
+	REQUIRE( is_persistent(3) == false );
+	REQUIRE( is_persistent(4) == false );
+	REQUIRE( is_persistent(5) == false );
+	REQUIRE( is_persistent(6) == false );
+	REQUIRE( is_persistent(7) == false );
+	REQUIRE( is_persistent(8) == false );
+	REQUIRE( is_persistent(9) == false );
+	REQUIRE( is_persistent(10) == false );
+	REQUIRE( is_persistent(11) == false );
+	REQUIRE( is_persistent(12) == false );
+	REQUIRE( is_persistent(13) == false );
+	REQUIRE( is_persistent(14) == false );
+	REQUIRE( is_persistent(15) == false );
+	REQUIRE( is_persistent(16) == false );
+	REQUIRE( is_persistent(17) == false );
+	REQUIRE( is_persistent(18) == false );
+	REQUIRE( is_persistent(19) == false );
+	REQUIRE( is_persistent(20) == false );
+	REQUIRE( is_persistent(21) == false );
+	REQUIRE( is_persistent(22) == false );
+	REQUIRE( is_persistent(23) == false );
+	REQUIRE( is_persistent(24) == false );
+	REQUIRE( is_persistent(25) == false );
+	REQUIRE( is_persistent(26) == false );
+	REQUIRE( is_persistent(27) == false );
+	REQUIRE( is_persistent(28) == false );
+	REQUIRE( is_persistent(29) == false );
+	REQUIRE( is_persistent(30) == false );
+	REQUIRE( is_persistent(31) == false );
+	REQUIRE( is_persistent(32) == false );
+	REQUIRE( is_persistent(33) == false );
+	REQUIRE( is_persistent(34) == false );
+	REQUIRE( is_persistent(35) == false );
+	REQUIRE( is_persistent(36) == false );
+	REQUIRE( is_persistent(37) == false );
+	REQUIRE( is_persistent(38) == false );
+	REQUIRE( is_persistent(39));
 	REQUIRE( is_persistent(555) == false );
 	REQUIRE( is_persistent(764) );
+	REQUIRE( is_persistent(765) == false );
+	REQUIRE( is_persistent(788) );
 	REQUIRE( is_persistent(789) == false );
+	REQUIRE( is_persistent(967) );
 	REQUIRE( is_persistent(999) );
+	REQUIRE( is_persistent(6788) );
+	REQUIRE( is_persistent(6789) == false );
+	REQUIRE( is_persistent(9996) );
+	REQUIRE( is_persistent(9997) == false );
 }
 
 TEST_CASE("product_perfect")
@@ -917,12 +1057,16 @@ TEST_CASE("product_perfect")
 	REQUIRE( is_product_perfect(55) );
 	REQUIRE( is_product_perfect(57) );
 	REQUIRE( is_product_perfect(58) );
+	REQUIRE( is_product_perfect(62) );
+	REQUIRE( is_product_perfect(63) == false );
 }
 
 TEST_CASE("parasite")
 {
 	REQUIRE( is_parasite(0) == false );
 	REQUIRE( is_parasite(102564) );
+	REQUIRE( is_parasite(142857) );
+	REQUIRE( is_parasite(142858) == false );
 	REQUIRE( is_parasite(410256) );
 	REQUIRE( is_parasite(179487) );
 	REQUIRE( is_parasite(717948) );
@@ -941,6 +1085,7 @@ TEST_CASE("easy_to_remember")
 	REQUIRE( is_easy_to_remember(345678) );
 	REQUIRE( is_easy_to_remember(6543210) );
 	REQUIRE( is_easy_to_remember(4000) );
+	REQUIRE( is_easy_to_remember(4001) == false );
 	REQUIRE( is_easy_to_remember(4422) );
 	REQUIRE( is_easy_to_remember(333000444llu) );
 	REQUIRE( is_easy_to_remember(555559977llu) );
@@ -953,6 +1098,7 @@ TEST_CASE("ecci1")
 	REQUIRE( is_ecci1(20) );
 	REQUIRE( is_ecci1(21) );
 	REQUIRE( is_ecci1(24) );
+	REQUIRE( is_ecci1(25) == false );
 }
 
 TEST_CASE("ecci2")
@@ -964,4 +1110,5 @@ TEST_CASE("ecci2")
 	REQUIRE( is_ecci2(21) );
 	REQUIRE( is_ecci2(22) == false );
 	REQUIRE( is_ecci2(32) );
+	REQUIRE( is_ecci2(33) == false );
 }
