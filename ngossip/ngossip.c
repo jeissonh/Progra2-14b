@@ -332,9 +332,36 @@ bool is_factorial(longnum num)
     return false;
 }
 
+    longnum create_fibonacci_sequence(longnum n)
+    {
+        int fibonacci_0=1;
+        int fibonacci_1=1;
+        longnum temp;
+        longnum i;
+
+        if ((n==0)||(n==1))
+            return 1;
+            for (i=2; i<=n; ++i)
+                    {
+                        temp = fibonacci_0 + fibonacci_1;
+                        fibonacci_0 = fibonacci_1;
+                        fibonacci_1 = temp;
+                    }
+        return temp;
+    }
+
 bool is_fibonacci(longnum num)
 {
-    return false;
+        longnum value=0;
+        longnum i=0;
+        while (value<=num)
+        {
+            value = create_fibonacci_sequence(i);
+            if (value == num)
+                return true;
+            i=i+1;
+        }
+        return false;
 }
 
 bool is_google(longnum num)
@@ -630,7 +657,7 @@ bool is_parasite(longnum num)
 }
 
 bool is_easy_to_remember(longnum num)
-{	
+{
 	longnum num2 = num;
 	longnum contador1 = 0;
 	longnum contador2 = 0;
