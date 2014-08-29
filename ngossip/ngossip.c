@@ -443,6 +443,15 @@ bool is_pentagonal(longnum num)
 
 bool is_perfect(longnum num)
 {
+	longnum sum = 0;
+	for(longnum i = 0; i < num; i++) {
+		if(num%i == 0){
+			sum += i;
+		}
+	}
+	if(sum == num){
+		return true;
+	}
     return false;
 }
 
@@ -485,7 +494,12 @@ bool is_prime(longnum num)
 
 bool is_primorial(longnum num)
 {
-    return false;
+	if((is_prime(num))||num == 2){
+		if(num % 6 == 0){
+			return true;
+		}
+	}
+	return false;
 }
 
 bool is_pronic(longnum num)
