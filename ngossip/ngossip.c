@@ -627,7 +627,31 @@ bool is_ulam(longnum num)
 
 bool is_undulating(longnum num)
 {
-    return false;
+    if (num  <= 100)
+    {
+        return false;
+    }
+
+    longnum primer_digito = num % 10;
+    num /= 10;
+    longnum segundo_digito = num % 10;
+    //num /= 10;
+    int contador = 0;
+    do
+    {
+        num /= 10;
+        if(contador % 2 == 0 && num % 10 != primer_digito)
+        {
+            return false;
+        }
+        if(contador % 2 != 0 && num % 10 != segundo_digito)
+        {
+            return false;
+        }
+        ++contador;
+    }while(num / 10 != 0);
+    return true;
+
 }
 
 bool is_untouchable(longnum num)
