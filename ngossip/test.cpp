@@ -563,11 +563,11 @@ TEST_CASE("happy")
 	REQUIRE( is_happy(1313) == false );
 	REQUIRE( is_happy(1789) == false );
 	REQUIRE( is_happy(1995) );
-	//REQUIRE( is_happy(2014) == false );
-	//REQUIRE( is_happy(1234) == false );
-	//REQUIRE( is_happy(3728) == false );
+	REQUIRE( is_happy(2014) == false );
+	REQUIRE( is_happy(1234) == false );
+	REQUIRE( is_happy(3728) == false );
 	REQUIRE( is_happy(1009) );
-	//REQUIRE( is_happy(1010) == false );
+	REQUIRE( is_happy(1010) == false );
 }
 
 TEST_CASE("hungry")

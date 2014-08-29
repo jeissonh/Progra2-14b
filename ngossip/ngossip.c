@@ -14,21 +14,21 @@ extern "C"
     return false;*/
 
 bool is_abundant(longnum num){
-int max=num/2;
-int cont=0;
-int entero=0;
-int i;
-for(i=2;i<=max; i++){
-if(num%i==0){
- entero=num/i;
-cont=cont+entero;
-}
-if (cont>num){
-return true;
+	int max=num/2;
+	int cont=0;
+	int entero=0;
+	int i;
+	for(i=2; i <= max; i++){
+		if(num%i==0){
+			entero=num/i;
+			cont=cont+entero;
+		}
+		if (cont>num){
+			return true;
 
-}
-}
-return false;
+		}
+	}
+	return false;
 
 }
 
@@ -374,22 +374,23 @@ bool is_happy(longnum num)
     if ( num == 0 ) {return false;}
 	if ( num == 1 ) {return true;}
 	
-	longnum digitos=0;
+	longnum digito=0;
 	longnum suma=0;
 	longnum cont=0;
 
 	
 	while(suma != 1){
 		suma=0;
-		digitos=0;
+		digito=0;
 	
 		while(num != 0){
-			digitos = num % 10;
-			suma =	suma	+ pow( digitos, 2);
-			num = num / 10;
-			if ( suma == 1 ){
-				return true;
-			}
+			digito = num % 10;
+			suma += digito * digito;
+			num /= 10;
+		}
+
+		if ( suma == 1 ){
+			return true;
 		}
 		num=suma;
 		cont++;
@@ -588,7 +589,7 @@ bool is_square(longnum num)
 
 bool is_square_free(longnum num)
 {
-    return false;
+	return false;
 }
 
 bool is_tetrahedral(longnum num)
