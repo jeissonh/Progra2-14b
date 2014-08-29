@@ -373,16 +373,16 @@ bool is_happy(longnum num)
 {
     if ( num == 0 ) {return false;}
 	if ( num == 1 ) {return true;}
-	
+
 	longnum digitos=0;
 	longnum suma=0;
 	longnum cont=0;
 
-	
+
 	while(suma != 1){
 		suma=0;
 		digitos=0;
-	
+
 		while(num != 0){
 			digitos = num % 10;
 			suma =	suma	+ pow( digitos, 2);
@@ -647,19 +647,19 @@ bool is_fermat(longnum num)
 
 bool is_hypotenuse(longnum num)
 {
-    if (num<=1){
+    if (num<=1)
+    {
     return false;
     }
-    for(longnum catheti_One=1;catheti_One<num;catheti_One++){
-        longnum catheti_Pow_One= pow(catheti_Pow_One,2.0);
 
-        for(longnum catheti_Two=1;catheti_Two<num;catheti_Two++){
-            longnum catheti_Pow_Two=pow(catheti_Pow_Two,2.0);
+    longnum i=1;
 
-            if (num==(catheti_Pow_One+catheti_Pow_Two)/num){
-                return true;
-            }
-        }
+    for( i ; i < num;++i)
+    {
+      if(num == (4*i+1))
+      {
+            return true;
+      }
     }
     return false;
 }
@@ -745,40 +745,47 @@ bool is_ecci1(longnum num)
 }
 
 bool is_ecci2(longnum num)
-{   //Returns false in case of num== 0 || 1
-
-    if (num<=1){
+{
+    //Returns false in case of num== 0 || 1
+    if (num <= 1)
+    {
         return false;
     }
 
     //Counts number of proper divisors
     longnum count=0;
 
-    for(longnum i=1;i<num;i++)
+    longnum i = 1;
+
+    for( i ; i < num; ++i)
     {
-        if(num%i==0)
+        if(num % i == 0)
         {
         count++;
         }
     }
 
     //Sum of digits
-    longnum total=0;
+    longnum total = 0;
 
-    while(num/10 != 0){
-        total+=num%10;
-        num=num/10;
+    while(num/10 != 0)
+    {
+        total += num % 10;
+        num/=10;
+    }
+    if(num / 10 == 0)
+    {
+        total += num % 10;
+    }
 
-    }
-    if(num/10==0){
-        total+=num%10;
-    }
     //Compares the two results
-    if(total==count){
+    if(total == count)
+    {
         return true;
-    }else{
-    return false;
-   }
+    }else
+    {
+        return false;
+    }
 
 
 }
