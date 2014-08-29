@@ -371,7 +371,31 @@ bool is_google(longnum num)
 
 bool is_happy(longnum num)
 {
-    return false;
+    if ( num == 0 ) {return false;}
+	if ( num == 1 ) {return true;}
+	
+	longnum digitos=0;
+	longnum suma=0;
+	longnum cont=0;
+
+	
+	while(suma != 1){
+		suma=0;
+		digitos=0;
+	
+		while(num != 0){
+			digitos = num % 10;
+			suma =	suma	+ pow( digitos, 2);
+			num = num / 10;
+			if ( suma == 1 ){
+				return true;
+			}
+		}
+		num=suma;
+		cont++;
+		if(cont>=20) {return false;}
+	}
+	return false;
 }
 
 bool is_hungry(longnum num)
@@ -588,7 +612,11 @@ bool is_triangular(longnum num)
 
 bool is_twin(longnum num)
 {
-    return false;
+	if ( num == 0 ) return false;
+	if ( is_prime(num) == false ) return false;
+	if ( is_prime(num + 2 ) ) return true;
+	if ( is_prime(num - 2 ) ) return true;
+	return false;
 }
 
 bool is_ulam(longnum num)
