@@ -647,21 +647,41 @@ bool is_fermat(longnum num)
 
 bool is_hypotenuse(longnum num)
 {
-    if (num<=1)
+    if (num < 5)
     {
-    return false;
+        return false;
     }
 
+    //Pitagorical prime
     longnum i=1;
+    longnum pitagorical=0;
 
-    for( i ; i < num;++i)
+    while( pitagorical < num)
     {
-      if(num == (4*i+1))
+      if((num == (4*i+1)))
       {
-            return true;
+         pitagorical = (4*i+1);
       }
+      ++i;
+    }
+
+    //Prime validation
+
+    if ( pitagorical % 2 == 0 ) return false;
+
+    longnum square_root = (pitagorical * pitagorical);
+    longnum n;
+    for ( n = 3; n <= square_root; n += 2 )
+    {
+
+
+        if ( pitagorical % n == 0 )
+            {
+                return true;
+            }
     }
     return false;
+
 }
 
 bool is_persistent(longnum num)
@@ -755,9 +775,9 @@ bool is_ecci2(longnum num)
     //Counts number of proper divisors
     longnum count=0;
 
-    longnum i = 1;
+    longnum i;
 
-    for( i ; i < num; ++i)
+    for( i = 1 ; i < num; ++i)
     {
         if(num % i == 0)
         {

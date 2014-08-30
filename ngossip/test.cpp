@@ -965,6 +965,7 @@ TEST_CASE("prime")
 	REQUIRE( is_prime(32) == false );
 	REQUIRE( is_prime(100000000000001llu) == false );
     REQUIRE( is_prime(1313) == false );
+    REQUIRE( is_prime(1349) == false);
 	REQUIRE( is_prime(1789) );
     REQUIRE( is_prime(1991) == false );
     REQUIRE( is_prime(1995) == false );
