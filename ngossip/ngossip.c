@@ -439,6 +439,31 @@ bool is_mersenne_prime(longnum num)
 
 bool is_narcissistic(longnum num)
 {
+   if(num == 0) return false;
+   longnum cou = 1;
+   longnum num2 = num;
+   longnum numf = num;
+
+   for (num2 /= 10; num2 !=0; num2 /= 10) {
+      ++cou;
+}
+   longnum div=num;
+   longnum result=0;
+   longnum k=1;
+
+for (int i=0;i<count;i++){
+   num=div%10;
+   div/=10;
+for (int l=0;l<count;l++){
+   k = k*num;
+}
+result=result+k;
+k = 1;
+}
+
+if(result==numf)
+{return  true;}
+
     return false;
 }
 
@@ -450,12 +475,12 @@ bool is_odd(longnum num)
 bool is_odious(longnum num)
 {
     int count;
-	
+
 	if(num==1)
 	{
 		return true;
 	}
-	
+
 	while(num>=1)
 	{
 		if(num %2 ==1)
@@ -464,7 +489,7 @@ bool is_odious(longnum num)
 		}
 		num=num/2;
 	}
-	
+
 	if(count %2!=0)
 	{
 		return true;
@@ -633,7 +658,7 @@ bool is_square_free(longnum num)
 
 bool is_tetrahedral(longnum num)
 {
-    
+
 	if(num==1)
 	{
 		return ;
@@ -645,12 +670,12 @@ bool is_tetrahedral(longnum num)
 	while(total < num)
 	{
    		total+=suma;
-   		nivel++; 
+   		nivel++;
    		suma+=level;
 	}
 	return total==num;
 	}
-  
+
 }
 
 bool is_triangular(longnum num)
@@ -802,6 +827,18 @@ bool is_persistent(longnum num)
 
 bool is_product_perfect(longnum num)
 {
+    longnum result = 1;
+	if (num == 1) return false;
+	if (num == 0) return false;
+
+	for ( longnum div = 1; div<num; div++) {
+	  if(num % div == 0)
+	     result = resul*div;
+    }
+
+	   if (result == num)
+        {return true;}
+
     return false;
 }
 
