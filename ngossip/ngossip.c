@@ -392,10 +392,29 @@ bool is_hungry(longnum num)
     return false;
 }
 
-bool is_lazy_caterer(longnum num)
-{
-    return false;
-}
+    bool is_lazy_caterer(longnum num)
+    {
+        if(num == 1)
+        {
+            return false;
+        }
+        longnum discriminante = 0;
+        double solucion_ecuacion = 0;
+        c = 2 * (num - 1);
+        discriminante = 1 - (4 * -c);
+        solucion_ecuacion = ( -1 + sqrt(discriminante) ) / 2;
+
+        if(solucion_ecuacion % 1 == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+
 
 bool is_lucky(longnum num)
 {
