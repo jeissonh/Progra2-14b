@@ -37,6 +37,7 @@ TEST_CASE("abundant")
 	REQUIRE( is_abundant(5628) );
 }
 
+
 TEST_CASE("amicable")
 {
 	REQUIRE( is_amicable(0) == false );
@@ -130,12 +131,12 @@ TEST_CASE("automorphic")
 {
 	REQUIRE( is_automorphic(0) == false );
 	REQUIRE( is_automorphic(1) );
-    REQUIRE( is_automorphic(2) );
+    REQUIRE( is_automorphic(2)==false );
 	REQUIRE( is_automorphic(5) );
 	REQUIRE( is_automorphic(6) );
 	REQUIRE( is_automorphic(25) );
 	REQUIRE( is_automorphic(76) );
-	REQUIRE( is_automorphic(375) );
+	REQUIRE( is_automorphic(375)==false );
 	REQUIRE( is_automorphic(376) );
 	REQUIRE( is_automorphic(625) );
 	REQUIRE( is_automorphic(9376) );
@@ -1655,3 +1656,4 @@ TEST_CASE("ecci2")
 	REQUIRE( is_ecci2(8911) == false );
 	REQUIRE( is_ecci2(89111) == false );
 }
+
