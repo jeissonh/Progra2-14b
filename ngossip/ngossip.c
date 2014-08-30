@@ -423,12 +423,10 @@ bool is_lucky(longnum num)
 
 bool is_mersenne(longnum num)
 {
-/*
-    longnum auxiliar = (log(++num)/log(2));
-    if(auxiliar % 1 != 0)return false;
-    return is_prime(aux);
-*/
-	return false;
+    longnum auxiliar = (log(num+1)/log(2));
+    if(auxiliar % 1 != 0)
+        return false;
+    return is_prime(auxiliar);
 }
 
 bool is_mersenne_prime(longnum num)
