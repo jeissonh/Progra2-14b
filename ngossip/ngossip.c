@@ -545,6 +545,8 @@ bool is_sociable(longnum num)
 
 bool is_square(longnum num)
 {
+   longnum temp;
+    if (sqrt(num)%1=0){};
     return false;
 }
 
@@ -619,20 +621,6 @@ bool is_fermat(longnum num)
 
 bool is_hypotenuse(longnum num)
 {
-    if (num<=1){
-    return false;
-    }
-    for(longnum catheti_One=1;catheti_One<num;catheti_One++){
-        longnum catheti_Pow_One= pow(catheti_Pow_One,2.0);
-
-        for(longnum catheti_Two=1;catheti_Two<num;catheti_Two++){
-            longnum catheti_Pow_Two=pow(catheti_Pow_Two,2.0);
-
-            if (num==(catheti_Pow_One+catheti_Pow_Two)/num){
-                return true;
-            }
-        }
-    }
     return false;
 }
 
