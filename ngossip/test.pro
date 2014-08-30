@@ -11,3 +11,6 @@ SOURCES += test.cpp \
 HEADERS += \
     ngossip.h
 
+OTHER_FILES += \
+    Makefile
+
