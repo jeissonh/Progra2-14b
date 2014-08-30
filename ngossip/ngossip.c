@@ -14,21 +14,21 @@ extern "C"
     return false;*/
 
 bool is_abundant(longnum num){
-int max=num/2;
-int cont=0;
-int entero=0;
-int i;
-for(i=2;i<=max; i++){
-if(num%i==0){
- entero=num/i;
-cont=cont+entero;
-}
-if (cont>num){
-return true;
+	int max=num/2;
+	int cont=0;
+	int entero=0;
+	int i;
+	for(i=2; i <= max; i++){
+		if(num%i==0){
+			entero=num/i;
+			cont=cont+entero;
+		}
+		if (cont>num){
+			return true;
 
-}
-}
-return false;
+		}
+	}
+	return false;
 
 }
 
@@ -373,23 +373,34 @@ bool is_happy(longnum num)
 {
     if ( num == 0 ) {return false;}
 	if ( num == 1 ) {return true;}
-	
+<<<<<<< HEAD
+
 	longnum digitos=0;
+=======
+
+	longnum digito=0;
+>>>>>>> 2cdf90abfd7718125995e4766b16b2522a6c8674
 	longnum suma=0;
 	longnum cont=0;
 
-	
+
 	while(suma != 1){
 		suma=0;
+<<<<<<< HEAD
 		digitos=0;
-	
+
+=======
+		digito=0;
+
+>>>>>>> 2cdf90abfd7718125995e4766b16b2522a6c8674
 		while(num != 0){
-			digitos = num % 10;
-			suma =	suma	+ pow( digitos, 2);
-			num = num / 10;
-			if ( suma == 1 ){
-				return true;
-			}
+			digito = num % 10;
+			suma += digito * digito;
+			num /= 10;
+		}
+
+		if ( suma == 1 ){
+			return true;
 		}
 		num=suma;
 		cont++;
@@ -470,6 +481,15 @@ bool is_pentagonal(longnum num)
 
 bool is_perfect(longnum num)
 {
+	longnum sum = 0;
+	for(longnum i = 0; i < num; i++) {
+		if(num%i == 0){
+			sum += i;
+		}
+	}
+	if(sum == num){
+		return true;
+	}
     return false;
 }
 
@@ -512,7 +532,12 @@ bool is_prime(longnum num)
 
 bool is_primorial(longnum num)
 {
-    return false;
+	if((is_prime(num))||num == 2){
+		if(num % 6 == 0){
+			return true;
+		}
+	}
+	return false;
 }
 
 bool is_pronic(longnum num)
@@ -577,7 +602,7 @@ bool is_square(longnum num)
 
 bool is_square_free(longnum num)
 {
-    return false;
+	return false;
 }
 
 bool is_tetrahedral(longnum num)
@@ -615,7 +640,31 @@ bool is_ulam(longnum num)
 
 bool is_undulating(longnum num)
 {
-    return false;
+    if (num  <= 100)
+    {
+        return false;
+    }
+
+    longnum primer_digito = num % 10;
+    num /= 10;
+    longnum segundo_digito = num % 10;
+    //num /= 10;
+    int contador = 0;
+    do
+    {
+        num /= 10;
+        if(contador % 2 == 0 && num % 10 != primer_digito)
+        {
+            return false;
+        }
+        if(contador % 2 != 0 && num % 10 != segundo_digito)
+        {
+            return false;
+        }
+        ++contador;
+    }while(num / 10 != 0);
+    return true;
+
 }
 
 bool is_untouchable(longnum num)
@@ -650,21 +699,40 @@ bool is_fermat(longnum num)
 
 bool is_hypotenuse(longnum num)
 {
-    if (num<=1){
-    return false;
+    if (num < 5)
+    {
+        return false;
     }
-    for(longnum catheti_One=1;catheti_One<num;catheti_One++){
-        longnum catheti_Pow_One= pow(catheti_Pow_One,2.0);
 
-        for(longnum catheti_Two=1;catheti_Two<num;catheti_Two++){
-            longnum catheti_Pow_Two=pow(catheti_Pow_Two,2.0);
+    //Pitagorical prime
+    longnum i=1;
+    longnum pitagorical=0;
 
-            if (num==(catheti_Pow_One+catheti_Pow_Two)/num){
+    while( pitagorical < num)
+    {
+      if((num == (4*i+1)))
+      {
+         pitagorical = (4*i+1);
+      }
+      ++i;
+    }
+
+    //Prime validation
+
+    if ( pitagorical % 2 == 0 ) return false;
+
+    longnum square_root = (pitagorical * pitagorical);
+    longnum n;
+
+    for ( n = 3; n <= square_root; n += 2 )
+    {
+        if ( pitagorical % n == 0 )
+            {
                 return true;
             }
-        }
     }
     return false;
+
 }
 
 bool is_persistent(longnum num)
@@ -748,40 +816,47 @@ bool is_ecci1(longnum num)
 }
 
 bool is_ecci2(longnum num)
-{   //Returns false in case of num== 0 || 1
-
-    if (num<=1){
+{
+    //Returns false in case of num== 0 || 1
+    if (num <= 1)
+    {
         return false;
     }
 
     //Counts number of proper divisors
     longnum count=0;
 
-    for(longnum i=1;i<num;i++)
+    longnum i;
+
+    for( i = 1 ; i < num; ++i)
     {
-        if(num%i==0)
+        if(num % i == 0)
         {
         count++;
         }
     }
 
     //Sum of digits
-    longnum total=0;
+    longnum total = 0;
 
-    while(num/10 != 0){
-        total+=num%10;
-        num=num/10;
+    while(num/10 != 0)
+    {
+        total += num % 10;
+        num/=10;
+    }
+    if(num / 10 == 0)
+    {
+        total += num % 10;
+    }
 
-    }
-    if(num/10==0){
-        total+=num%10;
-    }
     //Compares the two results
-    if(total==count){
+    if(total == count)
+    {
         return true;
-    }else{
-    return false;
-   }
+    }else
+    {
+        return false;
+    }
 
 
 }
