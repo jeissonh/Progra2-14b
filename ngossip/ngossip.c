@@ -246,7 +246,44 @@ bool is_cube(longnum num)
 
 bool is_deficient(longnum num)
 {
-    return false;
+    if(num==2)
+    {
+        return true;
+    }
+
+    longnum suma_total = 0;
+
+    if(num%2 == 0)  //numero par
+    {
+        for(int i = 3;  i <= num / 2; i++)
+        {
+            if(num%i  == 0)
+            {
+                suma_total= suma_total + i;
+            }
+        }
+        suma_total = suma_total + 3;
+
+    }
+    else  //es impar
+    {
+        for(int i = 1; i <= (num - 1) / 2; i++)
+        {
+            if(num%i  == 0)
+            {
+                suma_total = suma_total + i;
+            }
+        }
+
+    }
+    if(suma_total<num)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 bool is_even(longnum num)
