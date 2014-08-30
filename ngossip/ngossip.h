@@ -487,6 +487,7 @@ bool is_ecci1(longnum num);
 	Examples:
 		21 because 2+1 == 3 and count{1, 3, 7} == 3
 		32 because 3+2 == 5 and count{1, 2, 4, 8, 16} == 5
+		366 = {1,2,3,6,183,}
 */
 bool is_ecci2(longnum num);
 
