@@ -664,22 +664,28 @@ bool is_square_free(longnum num)
 bool is_tetrahedral(longnum num)
 {
 	
-	if(num==1)
+	if( num == 1 )
 	{
-		return ;
+		return true ;
 	}
 	
-	longnum level=1;
-	longnum suma=1;
-	longnum total=0;
+	longnum level = 1;
+	longnum suma = 1;
+	longnum total = 0;
 	
-	while(total < num)
+	while( total < num )
 	{
-   		total+=suma;
+   		total += suma;
    		level++;
-   		suma+=level;
+   		suma += level;
 	}
-		return total==num;
+		if( total == num )
+		{
+			return true;
+		}else
+		{
+			return false;
+		}
 	
 	return false;
 }
