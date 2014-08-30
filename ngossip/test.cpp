@@ -2014,7 +2014,7 @@ TEST_CASE("easy_to_remember")
 	REQUIRE( is_easy_to_remember(4000) );
 	REQUIRE( is_easy_to_remember(4001) == false );
 	REQUIRE( is_easy_to_remember(4422) );
-	REQUIRE( is_easy_to_remember(6667) == false );
+	REQUIRE( is_easy_to_remember(6667) );
 	REQUIRE( is_easy_to_remember(7691) == false );
 	REQUIRE( is_easy_to_remember(8911) == false );
 	REQUIRE( is_easy_to_remember(9875) == false );
