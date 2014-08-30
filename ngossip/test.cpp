@@ -1185,6 +1185,7 @@ TEST_CASE("prime")
 	REQUIRE( is_prime(32) == false );
 	REQUIRE( is_prime(257) );
     REQUIRE( is_prime(1313) == false );
+    REQUIRE( is_prime(1349) == false);
 	REQUIRE( is_prime(1789) );
 	REQUIRE( is_prime(1801) );  //*
 	REQUIRE( is_prime(1811) );  //*

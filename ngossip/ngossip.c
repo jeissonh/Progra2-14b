@@ -373,16 +373,26 @@ bool is_happy(longnum num)
 {
     if ( num == 0 ) {return false;}
 	if ( num == 1 ) {return true;}
-	
+<<<<<<< HEAD
+
+	longnum digitos=0;
+=======
+
 	longnum digito=0;
+>>>>>>> 2cdf90abfd7718125995e4766b16b2522a6c8674
 	longnum suma=0;
 	longnum cont=0;
 
-	
+
 	while(suma != 1){
 		suma=0;
+<<<<<<< HEAD
+		digitos=0;
+
+=======
 		digito=0;
-	
+
+>>>>>>> 2cdf90abfd7718125995e4766b16b2522a6c8674
 		while(num != 0){
 			digito = num % 10;
 			suma += digito * digito;
@@ -416,12 +426,15 @@ bool is_lucky(longnum num)
 
 bool is_mersenne(longnum num)
 {
-    return false;
+    longnum auxiliar = (log(++num)/log(2));
+    if(auxiliar % 1 != 0)return false;
+    return is_prime(aux);
 }
 
 bool is_mersenne_prime(longnum num)
 {
-    return false;
+    if(!is_prime(num))return false;
+    return is_mersenne(num);
 }
 
 bool is_narcissistic(longnum num)
@@ -692,21 +705,40 @@ bool is_fermat(longnum num)
 
 bool is_hypotenuse(longnum num)
 {
-    if (num<=1){
-    return false;
+    if (num < 5)
+    {
+        return false;
     }
-    for(longnum catheti_One=1;catheti_One<num;catheti_One++){
-        longnum catheti_Pow_One= pow(catheti_Pow_One,2.0);
 
-        for(longnum catheti_Two=1;catheti_Two<num;catheti_Two++){
-            longnum catheti_Pow_Two=pow(catheti_Pow_Two,2.0);
+    //Pitagorical prime
+    longnum i=1;
+    longnum pitagorical=0;
 
-            if (num==(catheti_Pow_One+catheti_Pow_Two)/num){
+    while( pitagorical < num)
+    {
+      if((num == (4*i+1)))
+      {
+         pitagorical = (4*i+1);
+      }
+      ++i;
+    }
+
+    //Prime validation
+
+    if ( pitagorical % 2 == 0 ) return false;
+
+    longnum square_root = (pitagorical * pitagorical);
+    longnum n;
+
+    for ( n = 3; n <= square_root; n += 2 )
+    {
+        if ( pitagorical % n == 0 )
+            {
                 return true;
             }
-        }
     }
     return false;
+
 }
 
 bool is_persistent(longnum num)
@@ -790,40 +822,47 @@ bool is_ecci1(longnum num)
 }
 
 bool is_ecci2(longnum num)
-{   //Returns false in case of num== 0 || 1
-
-    if (num<=1){
+{
+    //Returns false in case of num== 0 || 1
+    if (num <= 1)
+    {
         return false;
     }
 
     //Counts number of proper divisors
     longnum count=0;
 
-    for(longnum i=1;i<num;i++)
+    longnum i;
+
+    for( i = 1 ; i < num; ++i)
     {
-        if(num%i==0)
+        if(num % i == 0)
         {
         count++;
         }
     }
 
     //Sum of digits
-    longnum total=0;
+    longnum total = 0;
 
-    while(num/10 != 0){
-        total+=num%10;
-        num=num/10;
+    while(num/10 != 0)
+    {
+        total += num % 10;
+        num/=10;
+    }
+    if(num / 10 == 0)
+    {
+        total += num % 10;
+    }
 
-    }
-    if(num/10==0){
-        total+=num%10;
-    }
     //Compares the two results
-    if(total==count){
+    if(total == count)
+    {
         return true;
-    }else{
-    return false;
-   }
+    }else
+    {
+        return false;
+    }
 
 
 }
