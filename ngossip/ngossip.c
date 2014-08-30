@@ -371,28 +371,18 @@ bool is_google(longnum num)
 
 bool is_happy(longnum num)
 {
-    if ( num == 0 ) {return false;}
+	if ( num == 0 ) {return false;}
 	if ( num == 1 ) {return true;}
-<<<<<<< HEAD
-
-	longnum digitos=0;
-=======
 
 	longnum digito=0;
->>>>>>> 2cdf90abfd7718125995e4766b16b2522a6c8674
 	longnum suma=0;
 	longnum cont=0;
 
 
 	while(suma != 1){
 		suma=0;
-<<<<<<< HEAD
-		digitos=0;
-
-=======
 		digito=0;
 
->>>>>>> 2cdf90abfd7718125995e4766b16b2522a6c8674
 		while(num != 0){
 			digito = num % 10;
 			suma += digito * digito;
@@ -426,9 +416,12 @@ bool is_lucky(longnum num)
 
 bool is_mersenne(longnum num)
 {
+/*
     longnum auxiliar = (log(++num)/log(2));
     if(auxiliar % 1 != 0)return false;
     return is_prime(aux);
+*/
+	return false;
 }
 
 bool is_mersenne_prime(longnum num)
@@ -439,31 +432,6 @@ bool is_mersenne_prime(longnum num)
 
 bool is_narcissistic(longnum num)
 {
-   if(num == 0) return false;
-   longnum cou = 1;
-   longnum num2 = num;
-   longnum numf = num;
-
-   for (num2 /= 10; num2 !=0; num2 /= 10) {
-      ++cou;
-}
-   longnum div=num;
-   longnum result=0;
-   longnum k=1;
-
-for (int i=0;i<count;i++){
-   num=div%10;
-   div/=10;
-for (int l=0;l<count;l++){
-   k = k*num;
-}
-result=result+k;
-k = 1;
-}
-
-if(result==numf)
-{return  true;}
-
     return false;
 }
 
@@ -474,7 +442,7 @@ bool is_odd(longnum num)
 
 bool is_odious(longnum num)
 {
-    int count;
+	int count = 0;
 
 	if(num==1)
 	{
@@ -658,7 +626,7 @@ bool is_square_free(longnum num)
 
 bool is_tetrahedral(longnum num)
 {
-
+/*
 	if(num==1)
 	{
 		return ;
@@ -675,7 +643,8 @@ bool is_tetrahedral(longnum num)
 	}
 	return total==num;
 	}
-
+*/
+	return false;
 }
 
 bool is_triangular(longnum num)
@@ -778,7 +747,7 @@ bool is_hypotenuse(longnum num)
 
     while( pitagorical < num)
     {
-      if((num == (4*i+1)))
+	  if(num == (4*i+1))
       {
          pitagorical = (4*i+1);
       }
@@ -827,18 +796,6 @@ bool is_persistent(longnum num)
 
 bool is_product_perfect(longnum num)
 {
-    longnum result = 1;
-	if (num == 1) return false;
-	if (num == 0) return false;
-
-	for ( longnum div = 1; div<num; div++) {
-	  if(num % div == 0)
-	     result = resul*div;
-    }
-
-	   if (result == num)
-        {return true;}
-
     return false;
 }
 
