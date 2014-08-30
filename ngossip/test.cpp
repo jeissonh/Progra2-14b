@@ -169,8 +169,6 @@ TEST_CASE("automorphic")
 	REQUIRE( is_automorphic(375)==false );
 =======
 	REQUIRE( is_automorphic(366) == false );
-	REQUIRE( is_automorphic(375) );
->>>>>>> cbf592333ede5ece8daa0a893f9e97fda329ae85
 	REQUIRE( is_automorphic(376) );
 	REQUIRE( is_automorphic(625) );
     REQUIRE( is_automorphic(666) == false );
