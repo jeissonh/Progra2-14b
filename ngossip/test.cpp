@@ -328,6 +328,7 @@ TEST_CASE("composite")
 	REQUIRE( is_composite(22) );
 	REQUIRE( is_composite(23) == false );
 	REQUIRE( is_composite(105) );
+	REQUIRE( is_composite(351) );
 	REQUIRE( is_composite(366) );
     REQUIRE( is_composite(546) );
     REQUIRE( is_composite(666) );
@@ -448,6 +449,7 @@ TEST_CASE("deficient")
 	REQUIRE( is_deficient(105) );           //*
 	REQUIRE( is_deficient(290) );           //*
 	REQUIRE( is_deficient(293) );
+	REQUIRE( is_deficient(351) );
 	REQUIRE( is_deficient(366) == false );
 	REQUIRE( is_deficient(888) == false );
     REQUIRE( is_deficient(1313) );
@@ -955,6 +957,7 @@ TEST_CASE("odd")
 	REQUIRE( is_odd(22) == false );
     REQUIRE( is_odd(45) );
 	REQUIRE( is_odd(293) );
+	REQUIRE( is_odd(351) );
 	REQUIRE( is_odd(366) == false );
 	REQUIRE( is_odd(690) == false );
     REQUIRE( is_odd(1313) );
@@ -999,6 +1002,7 @@ TEST_CASE("odious")
 	REQUIRE( is_odious(41) );           //*
 	REQUIRE( is_odious(156) == false );
 	REQUIRE( is_odious(293) == false );
+	REQUIRE( is_odious(351) );
 	REQUIRE( is_odious(366) == false );
     REQUIRE( is_odious(666) );
     REQUIRE( is_odious(1313) == false );
@@ -1579,6 +1583,7 @@ TEST_CASE("triangular")
 	REQUIRE( is_triangular(36) );
 	REQUIRE( is_triangular(45) );
 	REQUIRE( is_triangular(55) );
+	REQUIRE( is_triangular(351) );
 	REQUIRE( is_triangular(366) == false );
     REQUIRE( is_triangular(666) );
     REQUIRE( is_triangular(1313) == false );
