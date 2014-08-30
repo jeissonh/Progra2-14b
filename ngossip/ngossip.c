@@ -9,27 +9,27 @@ extern "C"
 #endif
 
 
-    bool is_abundant(longnum num)
-    {
-         int max=num/2;
-         int cont=0;
-         int entero=0;
-         int i;
-         for(i=2;i<=max; i++)
-         {
-            if (num % i == 0)
-            {
-               entero = num / i;
-               cont = cont + entero;
-            }
-            if (cont > num)
-            {
-                return true;
+bool is_abundant(longnum num)
+{
+	 int max=num/2;
+	 int cont=0;
+	 int entero=0;
+	 int i;
+	 for(i=2;i<=max; i++)
+	 {
+		if (num % i == 0)
+		{
+		   entero = num / i;
+		   cont = cont + entero;
+		}
+		if (cont > num)
+		{
+			return true;
 
-            }
-        }
-        return false;
-
+		}
+	}
+	return false;
+}
 
 
 bool is_amicable(longnum num)
@@ -186,7 +186,7 @@ bool is_composite(longnum num)
     return false;
 }
 
-bool is_compositorial(longnum num)
+/*bool is_compositorial(longnum num)
 {
     return false;
 
@@ -202,7 +202,7 @@ bool is_compositorial(longnum num)
 			return true;
 
 	return false;
-}
+}*/
 
 bool is_compositorial(longnum num){
 
@@ -806,7 +806,7 @@ bool is_easy_to_remember(longnum num)
 	longnum cuenta1 = 0;
 	longnum cuenta2 = 0;
 	longnum t=0;
-	while (num2 != 0){  //Prueba si los dígitos son consecutivos
+	while (num2 != 0){  //Prueba si los digitos son consecutivos
 		contador1 = (num2%10);
 		num2 = (num2/10);
 		if (num2 >0 && (num2%10) == contador1-1)
