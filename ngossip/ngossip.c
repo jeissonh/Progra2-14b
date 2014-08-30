@@ -14,21 +14,21 @@ extern "C"
     return false;*/
 
 bool is_abundant(longnum num){
-int max=num/2;
-int cont=0;
-int entero=0;
-int i;
-for(i=2;i<=max; i++){
-if(num%i==0){
- entero=num/i;
-cont=cont+entero;
-}
-if (cont>num){
-return true;
+	int max=num/2;
+	int cont=0;
+	int entero=0;
+	int i;
+	for(i=2; i <= max; i++){
+		if(num%i==0){
+			entero=num/i;
+			cont=cont+entero;
+		}
+		if (cont>num){
+			return true;
 
-}
-}
-return false;
+		}
+	}
+	return false;
 
 }
 
@@ -371,7 +371,32 @@ bool is_google(longnum num)
 
 bool is_happy(longnum num)
 {
-    return false;
+	if ( num == 0 ) {return false;}
+	if ( num == 1 ) {return true;}
+
+	longnum digito=0;
+	longnum suma=0;
+	longnum cont=0;
+
+
+	while(suma != 1){
+		suma=0;
+		digito=0;
+
+		while(num != 0){
+			digito = num % 10;
+			suma += digito * digito;
+			num /= 10;
+		}
+
+		if ( suma == 1 ){
+			return true;
+		}
+		num=suma;
+		cont++;
+		if(cont>=20) {return false;}
+	}
+	return false;
 }
 
 bool is_hungry(longnum num)
@@ -391,12 +416,18 @@ bool is_lucky(longnum num)
 
 bool is_mersenne(longnum num)
 {
-    return false;
+/*
+    longnum auxiliar = (log(++num)/log(2));
+    if(auxiliar % 1 != 0)return false;
+    return is_prime(aux);
+*/
+	return false;
 }
 
 bool is_mersenne_prime(longnum num)
 {
-    return false;
+    if(!is_prime(num))return false;
+    return is_mersenne(num);
 }
 
 bool is_narcissistic(longnum num)
@@ -411,7 +442,27 @@ bool is_odd(longnum num)
 
 bool is_odious(longnum num)
 {
-    return false;
+	int count = 0;
+
+	if(num==1)
+	{
+		return true;
+	}
+
+	while(num>=1)
+	{
+		if(num %2 ==1)
+		{
+			count++;
+		}
+		num=num/2;
+	}
+
+	if(count %2!=0)
+	{
+		return true;
+	}
+	return false;
 }
 
 bool is_palindrome(longnum num)
@@ -443,6 +494,17 @@ bool is_pentagonal(longnum num)
 
 bool is_perfect(longnum num)
 {
+	longnum sum = 0;
+	if( num >= 1 ) {
+		for(longnum i = 1; i <= (num/2); i++) {
+			if(num % i == 0){
+				sum += i;
+			}
+		}
+		if ( sum == num ) {
+			return true;
+		}
+	}
     return false;
 }
 
@@ -485,7 +547,16 @@ bool is_prime(longnum num)
 
 bool is_primorial(longnum num)
 {
-    return false;
+	longnum product = 1;
+	for(longnum i = 2; product < num; ++i ) {
+		if (is_prime(i)) {
+			product *= i;
+		}
+	}
+	if( (num == product) && (num != 1) ) {
+		return true;
+	}
+	return false;
 }
 
 bool is_pronic(longnum num)
@@ -552,12 +623,30 @@ bool is_square(longnum num)
 
 bool is_square_free(longnum num)
 {
-    return false;
+	return false;
 }
 
 bool is_tetrahedral(longnum num)
 {
-    return false;
+/*
+	if(num==1)
+	{
+		return ;
+	}else
+	{
+			int level=1;
+	int suma=1;
+	int total=0;
+	while(total < num)
+	{
+   		total+=suma;
+   		nivel++;
+   		suma+=level;
+	}
+	return total==num;
+	}
+*/
+	return false;
 }
 
 bool is_triangular(longnum num)
@@ -576,7 +665,11 @@ bool is_triangular(longnum num)
 
 bool is_twin(longnum num)
 {
-    return false;
+	if ( num == 0 ) return false;
+	if ( is_prime(num) == false ) return false;
+	if ( is_prime(num + 2 ) ) return true;
+	if ( is_prime(num - 2 ) ) return true;
+	return false;
 }
 
 bool is_ulam(longnum num)
@@ -586,7 +679,31 @@ bool is_ulam(longnum num)
 
 bool is_undulating(longnum num)
 {
-    return false;
+    if (num  <= 100)
+    {
+        return false;
+    }
+
+    longnum primer_digito = num % 10;
+    num /= 10;
+    longnum segundo_digito = num % 10;
+    //num /= 10;
+    int contador = 0;
+    do
+    {
+        num /= 10;
+        if(contador % 2 == 0 && num % 10 != primer_digito)
+        {
+            return false;
+        }
+        if(contador % 2 != 0 && num % 10 != segundo_digito)
+        {
+            return false;
+        }
+        ++contador;
+    }while(num / 10 != 0);
+    return true;
+
 }
 
 bool is_untouchable(longnum num)
@@ -621,7 +738,43 @@ bool is_fermat(longnum num)
 
 bool is_hypotenuse(longnum num)
 {
+<<<<<<< HEAD
+=======
+    if (num < 5)
+    {
+        return false;
+    }
+
+    //Pitagorical prime
+    longnum i=1;
+    longnum pitagorical=0;
+
+    while( pitagorical < num)
+    {
+	  if(num == (4*i+1))
+      {
+         pitagorical = (4*i+1);
+      }
+      ++i;
+    }
+
+    //Prime validation
+
+    if ( pitagorical % 2 == 0 ) return false;
+
+    longnum square_root = (pitagorical * pitagorical);
+    longnum n;
+
+    for ( n = 3; n <= square_root; n += 2 )
+    {
+        if ( pitagorical % n == 0 )
+            {
+                return true;
+            }
+    }
+>>>>>>> origin/master
     return false;
+
 }
 
 bool is_persistent(longnum num)
@@ -705,40 +858,47 @@ bool is_ecci1(longnum num)
 }
 
 bool is_ecci2(longnum num)
-{   //Returns false in case of num== 0 || 1
-
-    if (num<=1){
+{
+    //Returns false in case of num== 0 || 1
+    if (num <= 1)
+    {
         return false;
     }
 
     //Counts number of proper divisors
     longnum count=0;
 
-    for(longnum i=1;i<num;i++)
+    longnum i;
+
+    for( i = 1 ; i < num; ++i)
     {
-        if(num%i==0)
+        if(num % i == 0)
         {
         count++;
         }
     }
 
     //Sum of digits
-    longnum total=0;
+    longnum total = 0;
 
-    while(num/10 != 0){
-        total+=num%10;
-        num=num/10;
+    while(num/10 != 0)
+    {
+        total += num % 10;
+        num/=10;
+    }
+    if(num / 10 == 0)
+    {
+        total += num % 10;
+    }
 
-    }
-    if(num/10==0){
-        total+=num%10;
-    }
     //Compares the two results
-    if(total==count){
+    if(total == count)
+    {
         return true;
-    }else{
-    return false;
-   }
+    }else
+    {
+        return false;
+    }
 
 
 }
