@@ -9,28 +9,28 @@ extern "C"
 #endif
 
 
-/*bool is_abundant(longnum num)
-{
-    return false;*/
+    bool is_abundant(longnum num)
+    {
+         int max=num/2;
+         int cont=0;
+         int entero=0;
+         int i;
+         for(i=2;i<=max; i++)
+         {
+            if (num % i == 0)
+            {
+               entero = num / i;
+               cont = cont + entero;
+            }
+            if (cont > num)
+            {
+                return true;
 
-bool is_abundant(longnum num){
-	int max=num/2;
-	int cont=0;
-	int entero=0;
-	int i;
-	for(i=2; i <= max; i++){
-		if(num%i==0){
-			entero=num/i;
-			cont=cont+entero;
-		}
-		if (cont>num){
-			return true;
+            }
+        }
+        return false;
 
-		}
-	}
-	return false;
 
-}
 
 bool is_amicable(longnum num)
 {
@@ -49,74 +49,25 @@ bool is_aspiring(longnum num)
 
 bool is_automorphic(longnum num)
 {
-    if(num==0){return false;}
+     int i;
+     long long int num_elevated = num * num;
+     int potencia = 1;
 
-	if(num==0){return false;}
+     if (num == 0) {return false;}
 
-longnum num_elevated=pow(num,2);
-if(num_elevated<100){
-if(num_elevated%10==num){
-return true;
-}
-}
-if(num_elevated<1000){
-if(num_elevated%100==num)
-return true;
+     if (num == 1) {return true;}
 
+     for (i = 1; i < 10; i++)
+     {
+         potencia= potencia * 10;
+         if (num_elevated % potencia == num)
+         {
+             return true;
+         }
+     }
+     return false;
 }
 
-if (num_elevated<10000){
-if(num_elevated%1000){
-return true;
-}
-}
-if (num_elevated<100000){
-if(num_elevated%10000){
-return true;
-}
-}
-if (num_elevated<1000000){
-if(num_elevated%100000){
-return true;
-}
-}
-if (num_elevated<10000000){
-if(num_elevated%1000000){
-return true;
-}
-}
-if (num_elevated<100000000){
-if(num_elevated%10000000){
-return true;
-}
-}
-if (num_elevated<1000000000){
-if(num_elevated%100000000){
-return true;
-}
-}
-if (num_elevated<10000000000){
-if(num_elevated%1000000000){
-return true;
-}
-}
-if (num_elevated<100000000000){
-if(num_elevated%10000000000){
-return true;
-}
-}
-if (num_elevated<1000000000000){
-if(num_elevated%10000000000){
-return true;
-}
-}
-if (num_elevated<10000000000000){
-if(num_elevated%100000000000){
-return true;
-}
-}
- return false;
-}
 
 longnum get_cake(double num)
 {
@@ -235,7 +186,7 @@ bool is_composite(longnum num)
     return false;
 }
 
-/*bool is_compositorial(longnum num)
+bool is_compositorial(longnum num)
 {
     return false;
 
@@ -251,7 +202,7 @@ bool is_composite(longnum num)
 			return true;
 
 	return false;
-}*/
+}
 
 bool is_compositorial(longnum num){
 
@@ -855,7 +806,7 @@ bool is_easy_to_remember(longnum num)
 	longnum cuenta1 = 0;
 	longnum cuenta2 = 0;
 	longnum t=0;
-	while (num2 != 0){  //Prueba si los dÃ­gitos son consecutivos
+	while (num2 != 0){  //Prueba si los dígitos son consecutivos
 		contador1 = (num2%10);
 		num2 = (num2/10);
 		if (num2 >0 && (num2%10) == contador1-1)

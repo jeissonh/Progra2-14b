@@ -504,4 +504,4 @@ int count_digits(longnum num);
 }
 #endif
 
-#endif // NGOSSIP_H
+ #endif // NGOSSIP_H
