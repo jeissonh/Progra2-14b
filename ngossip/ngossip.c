@@ -432,7 +432,33 @@ bool is_mersenne_prime(longnum num)
 
 bool is_narcissistic(longnum num)
 {
-    return false;
+/* // Este codigo no compila:
+	if(num == 0) return false;
+	longnum cou = 1;
+	longnum num2 = num;
+	longnum numf = num;
+
+	for (num2 /= 10; num2 !=0; num2 /= 10) {
+	   ++cou;
+ }
+	longnum div=num;
+	longnum result=0;
+	longnum k=1;
+
+ for (int i=0;i<count;i++){
+	num=div%10;
+	div/=10;
+ for (int l=0;l<count;l++){
+	k = k*num;
+ }
+ result=result+k;
+ k = 1;
+ }
+
+ if(result==numf)
+ {return  true;}
+*/
+	 return false;
 }
 
 bool is_odd(longnum num)
@@ -616,8 +642,10 @@ bool is_sociable(longnum num)
 
 bool is_square(longnum num)
 {
+/* // Este codigo no compila:
    longnum temp;
     if (sqrt(num)%1=0){};
+*/
     return false;
 }
 
@@ -738,42 +766,39 @@ bool is_fermat(longnum num)
 
 bool is_hypotenuse(longnum num)
 {
-<<<<<<< HEAD
-=======
-    if (num < 5)
-    {
-        return false;
-    }
+	if (num < 5)
+	{
+		return false;
+	}
 
-    //Pitagorical prime
-    longnum i=1;
-    longnum pitagorical=0;
+	//Pitagorical prime
+	longnum i=1;
+	longnum pitagorical=0;
 
-    while( pitagorical < num)
-    {
+	while( pitagorical < num)
+	{
 	  if(num == (4*i+1))
-      {
-         pitagorical = (4*i+1);
-      }
-      ++i;
-    }
+	  {
+		 pitagorical = (4*i+1);
+	  }
+	  ++i;
+	}
 
-    //Prime validation
+	//Prime validation
 
-    if ( pitagorical % 2 == 0 ) return false;
+	if ( pitagorical % 2 == 0 ) return false;
 
-    longnum square_root = (pitagorical * pitagorical);
-    longnum n;
+	longnum square_root = (pitagorical * pitagorical);
+	longnum n;
 
-    for ( n = 3; n <= square_root; n += 2 )
-    {
-        if ( pitagorical % n == 0 )
-            {
-                return true;
-            }
-    }
->>>>>>> origin/master
-    return false;
+	for ( n = 3; n <= square_root; n += 2 )
+	{
+		if ( pitagorical % n == 0 )
+			{
+				return true;
+			}
+	}
+	return false;
 
 }
 
@@ -801,7 +826,20 @@ bool is_persistent(longnum num)
 
 bool is_product_perfect(longnum num)
 {
-    return false;
+/* // Este codigo no compila:
+	longnum result = 1;
+	if (num == 1) return false;
+	if (num == 0) return false;
+
+	for ( longnum div = 1; div<num; div++) {
+	  if(num % div == 0)
+		 result = resul*div;
+	}
+
+	   if (result == num)
+		{return true;}
+*/
+	return false;
 }
 
 bool is_parasite(longnum num)
