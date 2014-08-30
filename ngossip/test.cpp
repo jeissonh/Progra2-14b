@@ -1881,7 +1881,7 @@ TEST_CASE("product_perfect")
 	REQUIRE( is_product_perfect(22) );
 	REQUIRE( is_product_perfect(26) );
 	REQUIRE( is_product_perfect(27) );
-	REQUIRE( is_product_perfect(28) );
+	REQUIRE( is_product_perfect(28) == false );
 	REQUIRE( is_product_perfect(33) );
 	REQUIRE( is_product_perfect(34) );
 	REQUIRE( is_product_perfect(35) );
