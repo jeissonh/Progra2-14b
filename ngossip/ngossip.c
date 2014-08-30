@@ -415,12 +415,15 @@ bool is_lucky(longnum num)
 
 bool is_mersenne(longnum num)
 {
-    return false;
+    longnum auxiliar = (log(++num)/log(2));
+    if(auxiliar % 1 != 0)return false;
+    return is_prime(aux);
 }
 
 bool is_mersenne_prime(longnum num)
 {
-    return false;
+    if(!is_prime(num))return false;
+    return is_mersenne(num);
 }
 
 bool is_narcissistic(longnum num)
