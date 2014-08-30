@@ -446,7 +446,27 @@ bool is_odd(longnum num)
 
 bool is_odious(longnum num)
 {
-    return false;
+    int count;
+	
+	if(num==1)
+	{
+		return true;
+	}
+	
+	while(num>=1)
+	{
+		if(num %2 ==1)
+		{
+			count++;
+		}
+		num=num/2;
+	}
+	
+	if(count %2!=0)
+	{
+		return true;
+	}
+	return false;
 }
 
 bool is_palindrome(longnum num)
@@ -604,7 +624,24 @@ bool is_square_free(longnum num)
 
 bool is_tetrahedral(longnum num)
 {
-    return false;
+    
+	if(num==1)
+	{
+		return ;
+	}else
+	{
+			int level=1;
+	int suma=1;
+	int total=0;
+	while(total < num)
+	{
+   		total+=suma;
+   		nivel++; 
+   		suma+=level;
+	}
+	return total==num;
+	}
+  
 }
 
 bool is_triangular(longnum num)
