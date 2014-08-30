@@ -426,12 +426,15 @@ bool is_lucky(longnum num)
 
 bool is_mersenne(longnum num)
 {
-    return false;
+    longnum auxiliar = (log(++num)/log(2));
+    if(auxiliar % 1 != 0)return false;
+    return is_prime(aux);
 }
 
 bool is_mersenne_prime(longnum num)
 {
-    return false;
+    if(!is_prime(num))return false;
+    return is_mersenne(num);
 }
 
 bool is_narcissistic(longnum num)
@@ -499,13 +502,15 @@ bool is_pentagonal(longnum num)
 bool is_perfect(longnum num)
 {
 	longnum sum = 0;
-	for(longnum i = 0; i < num; i++) {
-		if(num%i == 0){
-			sum += i;
+	if( num >= 1 ) {
+		for(longnum i = 1; i <= (num/2); i++) {
+			if(num % i == 0){
+				sum += i;
+			}
 		}
-	}
-	if(sum == num){
-		return true;
+		if ( sum == num ) {
+			return true;
+		}
 	}
     return false;
 }
@@ -549,10 +554,14 @@ bool is_prime(longnum num)
 
 bool is_primorial(longnum num)
 {
-	if((is_prime(num))||num == 2){
-		if(num % 6 == 0){
-			return true;
+	longnum product = 1;
+	for(longnum i = 2; product < num; ++i ) {
+		if (is_prime(i)) {
+			product *= i;
 		}
+	}
+	if( (num == product) && (num != 1) ) {
+		return true;
 	}
 	return false;
 }
