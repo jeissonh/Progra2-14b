@@ -439,33 +439,33 @@ bool is_mersenne_prime(longnum num)
 
 bool is_narcissistic(longnum num)
 {
-/* // Este codigo no compila:
-	if(num == 0) return false;
-	longnum cou = 1;
-	longnum num2 = num;
-	longnum numf = num;
+if(num == 0) return false;
+    int cou = 1;
+    longnum num2 = num;
+    longnum numf = num;
 
-	for (num2 /= 10; num2 !=0; num2 /= 10) {
-	   ++cou;
- }
-	longnum div=num;
-	longnum result=0;
-	longnum k=1;
+    for (num2 /= 10; num2 !=0; num2 /= 10) {
+      ++cou;
+  }
 
- for (int i=0;i<count;i++){
-	num=div%10;
-	div/=10;
- for (int l=0;l<count;l++){
-	k = k*num;
- }
- result=result+k;
- k = 1;
- }
+    longnum div=num;
+    longnum result=0;
+    longnum k=1;
 
- if(result==numf)
- {return  true;}
-*/
-	 return false;
+    for (int i=0;i<cou;i++){
+       num=div%10;
+       div/=10;
+    for (int l=0;l<cou;l++){
+       k = k*num;
+  }
+    result=result+k;
+    k = 1;
+}
+
+    if(result==numf)
+         return  true;
+
+ return false;
 }
 
 bool is_odd(longnum num)
@@ -663,16 +663,16 @@ bool is_square_free(longnum num)
 
 bool is_tetrahedral(longnum num)
 {
-	
+
 	if(num==1)
 	{
 		return ;
 	}
-	
+
 	longnum level=1;
 	longnum suma=1;
 	longnum total=0;
-	
+
 	while(total < num)
 	{
    		total+=suma;
@@ -680,7 +680,7 @@ bool is_tetrahedral(longnum num)
    		suma+=level;
 	}
 		return total==num;
-	
+
 	return false;
 }
 
@@ -833,20 +833,19 @@ bool is_persistent(longnum num)
 
 bool is_product_perfect(longnum num)
 {
-/* // Este codigo no compila:
-	longnum result = 1;
+ longnum result = 1;
 	if (num == 1) return false;
 	if (num == 0) return false;
 
 	for ( longnum div = 1; div<num; div++) {
 	  if(num % div == 0)
-		 result = resul*div;
-	}
+	     result = result*div;
+	     }
 
 	   if (result == num)
-		{return true;}
-*/
-	return false;
+	     return true;
+
+    return false;
 }
 
 bool is_parasite(longnum num)
