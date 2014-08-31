@@ -50,7 +50,7 @@ bool is_aspiring(longnum num)
 bool is_automorphic(longnum num)
 {
      int i;
-     long long int num_elevated = num * num;
+     longnum num_elevated = num * num;
      int potencia = 1;
 
      if (num == 0) {return false;}
