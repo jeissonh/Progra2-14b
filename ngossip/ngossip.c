@@ -729,7 +729,7 @@ bool is_triangular(longnum num)
     }
     return false;
 }
-
+*/
 bool is_twin(longnum num)
 {
 	if ( num == 0 ) return false;
@@ -738,7 +738,7 @@ bool is_twin(longnum num)
 	if ( is_prime(num - 2 ) ) return true;
 	return false;
 }
-
+/*
 bool is_ulam(longnum num)
 {
     return false;
