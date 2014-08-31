@@ -869,9 +869,108 @@ bool is_product_perfect(longnum num)
 
     return false;
 }
+int calc_lenght(longnum num)
+{
+    int lenght = 1;
+    longnum temp = num;
+    while(temp >= 10)
+    {
+        temp = (temp - temp % 10) / 10;
+        lenght++;
+    }
+    return lenght;
+}
 
 bool is_parasite(longnum num)
 {
+    bool is_parasite(longnum num)
+{
+    longnum temp = num;
+    int lenght = calc_lenght(num);
+    int times = 1;                              //dice si un dígito se repite en la cifra ingrasada
+    int right = temp%10;                        //guarda el último dígito de derecha a izquierda
+    int left = (temp/10)%10;                    //guarda el penúltimo dígito de derecha a izquierda
+    int i = 1;
+
+    while (i <= lenght && times <= 1)           //busca dígitos consecutivos iguales
+    {
+        if (right == left)
+            times++;
+        i++;
+        temp = temp/10;
+        right = temp%10;
+        left = (temp/10)%10;
+    }
+
+    if (times<2)                                //si no hay dígitos consecutivos iguales averigua si son decrecientes o crecientes
+    {
+         if (num != 1 && num < 10)
+         return false;
+         if (lenght > 10)
+             return false;
+
+         i = 1;
+         temp = num ;                                      //Decreciente
+         right = temp%10;
+         left = (temp/10)%10;
+         while ((i < lenght) && (right == (left-1)))
+         {
+             i++;
+             temp = temp/10;
+             right = temp%10;
+             left = (temp/10)%10;
+         }
+         if (i == lenght)
+             return true;
+
+         i = 1;                                         //Creciente
+         temp = num;
+         right = temp%10;
+         left = (temp/10)%10;
+         while ((i < lenght) && (right == (left+1)))
+         {
+            i++;
+            temp = temp/10;
+            right = temp%10;
+            left = (temp/10)%10;
+         }
+         if (i == lenght)
+            return true;
+    }/*else                           //se ejecuta cuando hay dígitos consecutivos iguales, no terminé porqque no entendí la definición.
+    {
+        int exp = 1;
+        int base = 1;
+        temp = num;
+        times = 1;
+        i=1;
+        right = temp%10;
+        left = (temp/10)%10;
+        while (i <= lenght)
+        {
+            if (right!=left)
+            {
+                temp = temp/10;
+                right = temp%10;
+                left = (temp/10)%10;
+                i++;
+            }else
+            {
+                base = right;
+
+                while(i<=lenght&&right==left)
+                {
+                    temp = temp/10;
+                    right = temp%10;
+                    left = (temp/10)%10;
+                    i++;
+                    exp++;
+                }
+
+
+            }
+        }
+    }*/
+
     return false;
 }
 
