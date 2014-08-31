@@ -869,6 +869,66 @@ bool is_product_perfect(longnum num)
 
     return false;
 }
+
+/*
+
+Estas funciones eran para la función is_parasite(longnum num) que había hecho inicialmente según la definión de parasite number
+encontrada en Internet.
+
+int calc_lenght(longnum num)
+{
+    int lenght = 1;
+    longnum temp = num;
+    while(temp >= 10)
+    {
+        temp = (temp-temp%10)/10;
+        lenght++;
+    }
+    return lenght;
+}
+
+int separate_last_digit(longnum num)
+{
+   return num%10;
+}
+
+longnum num_minus_last_digit(longnum num)
+{
+    longnum n = (num/10);
+    return n;
+}
+
+
+
+
+
+   longnum calc_parasite(longnum num)
+    {
+        longnum temp = num;
+        longnum num_lenght = calc_lenght(temp);
+        int last_num = separate_last_digit(temp);
+        longnum body = num_minus_last_digit(temp);
+        temp = body+last_num*powl(10,num_lenght);
+        return temp;
+    }
+
+    bool is_parasite(longnum num)
+    {
+        longnum temp = num;
+        longnum reference_number = calc_parasite(num);
+        longnum i = 1;
+        while (i < 10 && temp != reference_number)
+        {
+            temp = num*i;
+            i++;
+        }
+        if (i<9)
+            return true;
+        if (temp==reference_number)
+            return true;
+        return false;
+    }*/
+
 int calc_lenght(longnum num)
 {
     int lenght = 1;
