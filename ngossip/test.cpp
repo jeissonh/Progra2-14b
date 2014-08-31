@@ -790,7 +790,7 @@ TEST_CASE("hungry")
 	REQUIRE( is_hungry(82810) );
 	REQUIRE( is_hungry(161449) );
 	REQUIRE( is_hungry(1990) == false );
-	REQUIRE( is_hunfry(7104) == false );
+	REQUIRE( is_hungry(7104) == false );
 }
 
 TEST_CASE("lazy_caterer")
@@ -1781,7 +1781,7 @@ TEST_CASE("undulating")
 	REQUIRE( is_undulating(313) );
 	REQUIRE( is_undulating(314) == false );
 	REQUIRE( is_undulating(1990) == false );
-	REQUIRE( is_undalating(7104) == false );
+	REQUIRE( is_undulating(7104) == false );
 }
 
 TEST_CASE("untouchable")

@@ -659,7 +659,7 @@ bool is_square(longnum num)
 /* // Este codigo no compila:
    longnum temp;
     if (sqrt(num)%1=0){};
-*/                                                                          /*          ///////////////
+*/
     return false;
 }
 
@@ -670,40 +670,21 @@ bool is_square_free(longnum num)
 
 bool is_tetrahedral(longnum num)
 {
-
-
-	if(num==1)
-
-
 	if( num == 1 )
-
 	{
 		return true ;
 	}
 
-
-	longnum level=1;
-	longnum suma=1;
-	longnum total=0;
-
-	while(total < num)
-
-
-	level = 1;
-	suma = 1;
-	total = 0;
+	longnum level = 1;
+	longnum suma = 1;
+	longnum total = 0;
 
 	while( total < num )
-
 	{
-   		total += suma;
-   		level++;
-   		suma += level;
+		total += suma;
+		level++;
+		suma += level;
 	}
-
-		return total==num;
-
-
 		if( total == num )
 		{
 			return true;
@@ -711,7 +692,6 @@ bool is_tetrahedral(longnum num)
 		{
 			return false;
 		}
-
 
 	return false;
 }
@@ -729,7 +709,7 @@ bool is_triangular(longnum num)
     }
     return false;
 }
-*/
+
 bool is_twin(longnum num)
 {
 	if ( num == 0 ) return false;
@@ -738,7 +718,7 @@ bool is_twin(longnum num)
 	if ( is_prime(num - 2 ) ) return true;
 	return false;
 }
-/*
+
 bool is_ulam(longnum num)
 {
     return false;
@@ -825,10 +805,10 @@ bool is_hypotenuse(longnum num)
 
     //see if num isn't a prime
     longnum n=3;
-    longnum square_root=sqrt(num);
+	longnum square_root=sqrt(num);
 
     while(n <= square_root){
-        longnum square_root=sqrt(num);
+		//longnum square_root=sqrt(num);
 
         if(num%n==0)
         {
@@ -903,17 +883,6 @@ bool is_product_perfect(longnum num)
 Estas funciones eran para la función is_parasite(longnum num) que había hecho inicialmente según la definión de parasite number
 encontrada en Internet.
 
-int calc_lenght(longnum num)
-{
-    int lenght = 1;
-    longnum temp = num;
-    while(temp >= 10)
-    {
-        temp = (temp-temp%10)/10;
-        lenght++;
-    }
-    return lenght;
-}
 
 int separate_last_digit(longnum num)
 {
@@ -925,10 +894,6 @@ longnum num_minus_last_digit(longnum num)
     longnum n = (num/10);
     return n;
 }
-
-
-
-
 
    longnum calc_parasite(longnum num)
     {
@@ -970,8 +935,6 @@ int calc_lenght(longnum num)
 }
 
 bool is_parasite(longnum num)
-{
-    bool is_parasite(longnum num)
 {
     longnum temp = num;
     int lenght = calc_lenght(num);
