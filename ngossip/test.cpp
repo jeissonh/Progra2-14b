@@ -1803,10 +1803,12 @@ TEST_CASE("hypotenuse")
 	REQUIRE( is_hypotenuse(0) == false );
     REQUIRE( is_hypotenuse(1) == false );
 	REQUIRE( is_hypotenuse(5) );
+	REQUIRE( is_hypotenuse(6) == false);
 	REQUIRE( is_hypotenuse(10) );
 	REQUIRE( is_hypotenuse(13) );
 	REQUIRE( is_hypotenuse(17) );
 	REQUIRE( is_hypotenuse(25) );
+	REQUIRE( is_hypotenuse(26) );
 	REQUIRE( is_hypotenuse(29) );
 	REQUIRE( is_hypotenuse(37) );
 	REQUIRE( is_hypotenuse(41) );
@@ -1850,18 +1852,24 @@ TEST_CASE("hypotenuse")
 	REQUIRE( is_hypotenuse(281) );
 	REQUIRE( is_hypotenuse(289) );
 	REQUIRE( is_hypotenuse(293) );
-	REQUIRE( is_hypotenuse(366) == false );
-    REQUIRE( is_hypotenuse(1349) == false );
-    REQUIRE( is_hypotenuse(1313) == false );
-    REQUIRE( is_hypotenuse(1789) == false );
-    REQUIRE( is_hypotenuse(1995) == false );
-    REQUIRE( is_hypotenuse(2014) == false );
-    REQUIRE( is_hypotenuse(6667) == false );
-	REQUIRE( is_hypotenuse(313) );
-    REQUIRE( is_hypotenuse(8911) == false );
 	REQUIRE( is_hypotenuse(305) );
-	REQUIRE( is_hypotenuse(306) == false );
-	REQUIRE( is_hypotenuse(1990) == false );
+	REQUIRE( is_hypotenuse(306) );
+	REQUIRE( is_hypotenuse(307)  == false );
+	REQUIRE( is_hypotenuse(313) );
+	REQUIRE( is_hypotenuse(366) );
+	REQUIRE( is_hypotenuse(1302)== false );
+    REQUIRE( is_hypotenuse(1313));
+    REQUIRE( is_hypotenuse(1349) == false );
+    REQUIRE( is_hypotenuse(1789));
+    REQUIRE( is_hypotenuse(1990));
+    REQUIRE( is_hypotenuse(1995));
+    REQUIRE( is_hypotenuse(2012) == false );
+    REQUIRE( is_hypotenuse(2014));
+    REQUIRE( is_hypotenuse(6667));
+	REQUIRE( is_hypotenuse(8911) == false );
+    REQUIRE( is_hypotenuse(99991) == false );
+
+
 }
 
 TEST_CASE("persistent")

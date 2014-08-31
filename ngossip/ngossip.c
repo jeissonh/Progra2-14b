@@ -795,40 +795,58 @@ bool is_fermat(longnum num)
 
 bool is_hypotenuse(longnum num)
 {
-	if (num < 5)
-	{
-		return false;
-	}
+    if (num <= 1)
+    {
+        return false;
+    }
 
-	//Pitagorical prime
-	longnum i=1;
-	longnum pitagorical=0;
+    if (num % 5 == 0)
+    {
+        return true;
+    }
 
-	while( pitagorical < num)
-	{
-	  if(num == (4*i+1))
-	  {
-		 pitagorical = (4*i+1);
-	  }
-	  ++i;
-	}
+    if(num % 2 == 0)
+    {
+        while(num % 2 == 0)
+        {
+        num /= 2;
+        }
+    }
 
-	//Prime validation
+    //see if num isn't a prime
+    longnum n=3;
+    longnum square_root=sqrt(num);
 
-	if ( pitagorical % 2 == 0 ) return false;
+    while(n <= square_root){
+        longnum square_root=sqrt(num);
 
-	longnum square_root = (pitagorical * pitagorical);
-	longnum n;
+        if(num%n==0)
+        {
+        num /= n;
+        }
 
-	for ( n = 3; n <= square_root; n += 2 )
-	{
-		if ( pitagorical % n == 0 )
-			{
-				return true;
-			}
-	}
-	return false;
+        if(num==n){
+            n+=2;
+        }
 
+        if (num%n != 0)
+        {
+            n+=2;
+        }
+
+
+    }
+
+    //Sequence of hypotenuse
+    int m;
+    for(m=5; m <= num; m+=4)
+    {
+        if(m == num){
+            return true;
+        }
+    }
+
+    return false;
 }
 
 bool is_persistent(longnum num)
