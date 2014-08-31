@@ -423,12 +423,10 @@ bool is_lucky(longnum num)
 
 bool is_mersenne(longnum num)
 {
-/*
-    longnum auxiliar = (log(++num)/log(2));
-    if(auxiliar % 1 != 0)return false;
-    return is_prime(aux);
-*/
-	return false;
+    longnum auxiliar = (log(num+1)/log(2));
+    if(auxiliar % 1 != 0)
+        return false;
+    return is_prime(auxiliar);
 }
 
 bool is_mersenne_prime(longnum num)
@@ -663,24 +661,49 @@ bool is_square_free(longnum num)
 
 bool is_tetrahedral(longnum num)
 {
+<<<<<<< HEAD
 
 	if(num==1)
+=======
+	
+	if( num == 1 )
+>>>>>>> 2835d65ecf1a6dc0fa64a8cbd5ac251f554bcca8
 	{
-		return ;
+		return true ;
 	}
+<<<<<<< HEAD
 
 	longnum level=1;
 	longnum suma=1;
 	longnum total=0;
 
 	while(total < num)
+=======
+	
+	longnum level = 1;
+	longnum suma = 1;
+	longnum total = 0;
+	
+	while( total < num )
+>>>>>>> 2835d65ecf1a6dc0fa64a8cbd5ac251f554bcca8
 	{
-   		total+=suma;
+   		total += suma;
    		level++;
-   		suma+=level;
+   		suma += level;
 	}
+<<<<<<< HEAD
 		return total==num;
 
+=======
+		if( total == num )
+		{
+			return true;
+		}else
+		{
+			return false;
+		}
+	
+>>>>>>> 2835d65ecf1a6dc0fa64a8cbd5ac251f554bcca8
 	return false;
 }
 
