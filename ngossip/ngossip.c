@@ -320,34 +320,34 @@ bool is_factorial(longnum num)
     return false;
 }
 
-    longnum create_fibonacci_sequence(longnum n)
-    {
-        int fibonacci_0=1;
-        int fibonacci_1=1;
-        longnum temp;
-        longnum i;
+longnum create_fibonacci_sequence(longnum n)
+{
+    int fibonacci_0 = 1;
+    int fibonacci_1 = 1;
+    longnum temp;
+    longnum i;
 
-        if ((n==0)||(n==1))
-            return 1;
-            for (i=2; i<=n; ++i)
-                    {
-                        temp = fibonacci_0 + fibonacci_1;
-                        fibonacci_0 = fibonacci_1;
-                        fibonacci_1 = temp;
-                    }
-        return temp;
-    }
+    if ((n == 0)||(n == 1))
+        return 1;
+        for (i = 2; i <= n; i++)
+                {
+                    temp = fibonacci_0 + fibonacci_1;
+                    fibonacci_0 = fibonacci_1;
+                    fibonacci_1 = temp;
+                }
+    return temp;
+}
 
 bool is_fibonacci(longnum num)
 {
-        longnum value=0;
-        longnum i=0;
-        while (value<=num)
+        longnum value = 0;
+        longnum i = 0;
+        while (value <= num)
         {
             value = create_fibonacci_sequence(i);
             if (value == num)
                 return true;
-            i=i+1;
+            i++;
         }
         return false;
 }
@@ -399,8 +399,8 @@ bool is_hungry(longnum num)
             return false;
         }
         longnum discriminante = 0;
-        double solucion_ecuacion = 0;
-        c = 2 * (num - 1);
+        int solucion_ecuacion = 0;
+        longnum c = 2 * (num - 1);
         discriminante = 1 - (4 * -c);
         solucion_ecuacion = ( -1 + sqrt(discriminante) ) / 2;
 
@@ -423,9 +423,8 @@ bool is_lucky(longnum num)
 
 bool is_mersenne(longnum num)
 {
-    longnum auxiliar = (log(num+1)/log(2));
-    if(auxiliar % 1 != 0)
-        return false;
+    longnum auxiliar = (log(++num)/log(2));
+    if(auxiliar % 1 != 0)return false;
     return is_prime(auxiliar);
 }
 
@@ -661,40 +660,40 @@ bool is_square_free(longnum num)
 
 bool is_tetrahedral(longnum num)
 {
-<<<<<<< HEAD
+
 
 	if(num==1)
-=======
-	
+
+
 	if( num == 1 )
->>>>>>> 2835d65ecf1a6dc0fa64a8cbd5ac251f554bcca8
+
 	{
 		return true ;
 	}
-<<<<<<< HEAD
+
 
 	longnum level=1;
 	longnum suma=1;
 	longnum total=0;
 
 	while(total < num)
-=======
-	
-	longnum level = 1;
-	longnum suma = 1;
-	longnum total = 0;
-	
+
+
+	level = 1;
+	suma = 1;
+	total = 0;
+
 	while( total < num )
->>>>>>> 2835d65ecf1a6dc0fa64a8cbd5ac251f554bcca8
+
 	{
    		total += suma;
    		level++;
    		suma += level;
 	}
-<<<<<<< HEAD
+
 		return total==num;
 
-=======
+
 		if( total == num )
 		{
 			return true;
@@ -702,8 +701,8 @@ bool is_tetrahedral(longnum num)
 		{
 			return false;
 		}
-	
->>>>>>> 2835d65ecf1a6dc0fa64a8cbd5ac251f554bcca8
+
+
 	return false;
 }
 
