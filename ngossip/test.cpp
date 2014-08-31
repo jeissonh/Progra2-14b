@@ -2148,3 +2148,4 @@ TEST_CASE("ecci2")
 	REQUIRE( is_ecci2(89111) == false );
 	REQUIRE( is_ecci2(1990) == false );
 }
+

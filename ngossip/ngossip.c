@@ -130,47 +130,56 @@ bool is_carmichael(longnum num)
 
 bool is_catalan(longnum num){
 
-	longnum i, j, k, n, producto, pre_numerador, denominador, pre_denominador1, pre_denominador2, numerador, denominador1, denominador2;
+    longnum i, j, k, n, producto, pre_numerador, denominador, pre_denominador1, pre_denominador2, numerador, denominador1, denominador2; // Si se ponen doubles da bien todos los casos,
+                                                                                                                                         // hasta el que me sale mal con longnum (58787 == false);
+    if (num == 0){
+            return false;
+    }
 
-	if (num == 0) {return false;}
+    n = 1;
 
-	n = 1;
+    while (n <= 30){
 
-	while (n <= num){
+        producto = 1;
+        pre_numerador = (2 * n);
+        pre_denominador1 = (n + 1);
+        pre_denominador2 = n;
+        numerador = 1;
+        denominador = 1;
+        denominador1 = 1;
+        denominador2 = 1;
 
-	pre_numerador = (2 * n);
-	pre_denominador1 = (n + 1);
-	pre_denominador2 = n;
-	numerador = 1;
-	denominador1 = 1;
-	denominador2 = 1;
+        for (i = 1; i <= pre_numerador; i++){
+                numerador *= i;
+        }
 
-	for (i = 1; i <= pre_numerador; i++){
-		numerador *= i;
-	}
+        for (j = 1; j <= pre_denominador1; j++){
+                denominador1 *= j;
+        }
 
-	for (j = 1; j <= pre_denominador1; j++){
-		denominador1 *= j;
-	}
+        for (k = 1; k <= pre_denominador2; k++){
+                denominador2 *= k;
+        }
 
-	for (k = 1; k <= pre_denominador2; k++){
-		denominador2 *= k;
-	}
+        denominador = denominador1 * denominador2;
 
-	denominador = denominador1 * denominador2;
-	if (denominador != 0) {producto = numerador / denominador;}
+        if (denominador != 0){
+                producto = numerador / denominador;
+        }
 
-	if (producto == num) {
-		return true;
-	}
-	else {
-		n++;
-	}
+        if (producto > num){
+                return false;
+        }
 
-	}
+        if (producto == num){
+                return true;
+        }
 
-	return false;
+        if (producto < num){
+                n++;
+        }
 
+    }
 
 }
 
@@ -208,7 +217,9 @@ bool is_compositorial(longnum num){
 
 	longnum n, producto;
 
-	if (num == 0) {return false;}
+	if ( (num == 0) || (num == 1) || (num == 2) || (num == 3) ) {
+            return false;
+    }
 
 	producto = 1;
 	n = 4;
@@ -229,7 +240,6 @@ bool is_compositorial(longnum num){
 	else{
 		return false;
 	}
-
 
 }
 
@@ -649,7 +659,7 @@ bool is_square(longnum num)
 /* // Este codigo no compila:
    longnum temp;
     if (sqrt(num)%1=0){};
-*/
+*/                                                                          /*          ///////////////
     return false;
 }
 
