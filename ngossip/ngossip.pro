@@ -10,3 +10,6 @@ SOURCES += main.c \
 
 HEADERS += \
     ngossip.h
+
+OTHER_FILES += \
+    Makefile
