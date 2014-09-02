@@ -880,7 +880,7 @@ bool is_product_perfect(longnum num)
 
 /*
 
-Estas funciones eran para la función is_parasite(longnum num) que había hecho inicialmente según la definión de parasite number
+Estas funciones eran para la funciÃ³n is_parasite(longnum num) que habÃ­a hecho inicialmente segÃºn la definiÃ³n de parasite number
 encontrada en Internet.
 
 
@@ -938,12 +938,12 @@ bool is_parasite(longnum num)
 {
     longnum temp = num;
     int lenght = calc_lenght(num);
-    int times = 1;                              //dice si un dígito se repite en la cifra ingrasada
-    int right = temp%10;                        //guarda el último dígito de derecha a izquierda
-    int left = (temp/10)%10;                    //guarda el penúltimo dígito de derecha a izquierda
+    int times = 1;                              //dice si un dÃ­gito se repite en la cifra ingrasada
+    int right = temp%10;                        //guarda el Ãºltimo dÃ­gito de derecha a izquierda
+    int left = (temp/10)%10;                    //guarda el penÃºltimo dÃ­gito de derecha a izquierda
     int i = 1;
 
-    while (i <= lenght && times <= 1)           //busca dígitos consecutivos iguales
+    while (i <= lenght && times <= 1)           //busca dÃ­gitos consecutivos iguales
     {
         if (right == left)
             times++;
@@ -953,7 +953,7 @@ bool is_parasite(longnum num)
         left = (temp/10)%10;
     }
 
-    if (times<2)                                //si no hay dígitos consecutivos iguales averigua si son decrecientes o crecientes
+    if (times<2)                                //si no hay dÃ­gitos consecutivos iguales averigua si son decrecientes o crecientes
     {
          if (num != 1 && num < 10)
          return false;
@@ -987,7 +987,7 @@ bool is_parasite(longnum num)
          }
          if (i == lenght)
             return true;
-    }/*else                           //se ejecuta cuando hay dígitos consecutivos iguales, no terminé porqque no entendí la definición.
+    }/*else                           //se ejecuta cuando hay dÃ­gitos consecutivos iguales, no terminÃ© porqque no entendÃ­ la definiciÃ³n.
     {
         int exp = 1;
         int base = 1;
