@@ -879,7 +879,7 @@ TEST_CASE("mersenne")
 	REQUIRE( is_mersenne(7) );
 	REQUIRE( is_mersenne(31) );
 	REQUIRE( is_mersenne(127) );
-	REQUIRE( is_mersenne(255) );
+	REQUIRE( is_mersenne(255) == false);
 	REQUIRE( is_mersenne(256) == false );
 	REQUIRE( is_mersenne(293) == false );
 	REQUIRE( is_mersenne(366) == false );
@@ -917,7 +917,7 @@ TEST_CASE("mersenne_prime")
 	REQUIRE( is_mersenne_prime(3) );
 	REQUIRE( is_mersenne_prime(7) );
 	REQUIRE( is_mersenne_prime(31) );
-	REQUIRE( is_mersenne_prime(61) );
+	REQUIRE( is_mersenne_prime(61) == false);
 	REQUIRE( is_mersenne_prime(62) == false );
 	REQUIRE( is_mersenne_prime(127) );
 	REQUIRE( is_mersenne_prime(293) == false );
