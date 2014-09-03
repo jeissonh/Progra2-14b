@@ -878,15 +878,9 @@ bool is_product_perfect(longnum num)
     return false;
 }
 
-/*
-
-Estas funciones eran para la función is_parasite(longnum num) que había hecho inicialmente según la definión de parasite number
-encontrada en Internet.
-
-
 int separate_last_digit(longnum num)
 {
-   return num%10;
+    return num%10;
 }
 
 longnum num_minus_last_digit(longnum num)
@@ -895,135 +889,46 @@ longnum num_minus_last_digit(longnum num)
     return n;
 }
 
-   longnum calc_parasite(longnum num)
-    {
-        longnum temp = num;
-        longnum num_lenght = calc_lenght(temp);
-        int last_num = separate_last_digit(temp);
-        longnum body = num_minus_last_digit(temp);
-        temp = body+last_num*powl(10,num_lenght);
-        return temp;
-    }
-
-    bool is_parasite(longnum num)
-    {
-        longnum temp = num;
-        longnum reference_number = calc_parasite(num);
-        longnum i = 1;
-        while (i < 10 && temp != reference_number)
-        {
-            temp = num*i;
-            i++;
-        }
-        if (i<9)
-            return true;
-        if (temp==reference_number)
-            return true;
-        return false;
-    }*/
-
 int calc_lenght(longnum num)
 {
     int lenght = 1;
     longnum temp = num;
     while(temp >= 10)
     {
-        temp = (temp - temp % 10) / 10;
+        temp = (temp-temp%10)/10;
         lenght++;
     }
     return lenght;
 }
 
-bool is_parasite(longnum num)
-{
-    longnum temp = num;
-    int lenght = calc_lenght(num);
-    int times = 1;                              //dice si un dígito se repite en la cifra ingrasada
-    int right = temp%10;                        //guarda el último dígito de derecha a izquierda
-    int left = (temp/10)%10;                    //guarda el penúltimo dígito de derecha a izquierda
-    int i = 1;
-
-    while (i <= lenght && times <= 1)           //busca dígitos consecutivos iguales
+longnum calc_parasite(longnum num)
     {
-        if (right == left)
-            times++;
-        i++;
-        temp = temp/10;
-        right = temp%10;
-        left = (temp/10)%10;
+        longnum temp = num;
+        longnum num_lenght = calc_lenght(temp);
+        int last_num = separate_last_digit(temp);
+        longnum body = num_minus_last_digit(temp);
+        temp = body+last_num*powl(10,num_lenght-1);
+        return temp;
     }
 
-    if (times<2)                                //si no hay dígitos consecutivos iguales averigua si son decrecientes o crecientes
+bool is_parasite(longnum num)
     {
-         if (num != 1 && num < 10)
-         return false;
-         if (lenght > 10)
-             return false;
-
-         i = 1;
-         temp = num ;                                      //Decreciente
-         right = temp%10;
-         left = (temp/10)%10;
-         while ((i < lenght) && (right == (left-1)))
-         {
-             i++;
-             temp = temp/10;
-             right = temp%10;
-             left = (temp/10)%10;
-         }
-         if (i == lenght)
-             return true;
-
-         i = 1;                                         //Creciente
-         temp = num;
-         right = temp%10;
-         left = (temp/10)%10;
-         while ((i < lenght) && (right == (left+1)))
-         {
-            i++;
-            temp = temp/10;
-            right = temp%10;
-            left = (temp/10)%10;
-         }
-         if (i == lenght)
-            return true;
-    }/*else                           //se ejecuta cuando hay dígitos consecutivos iguales, no terminé porqque no entendí la definición.
-    {
-        int exp = 1;
-        int base = 1;
-        temp = num;
-        times = 1;
-        i=1;
-        right = temp%10;
-        left = (temp/10)%10;
-        while (i <= lenght)
+        longnum temp = num;
+        longnum reference_number = calc_parasite(num);
+        cout<<reference_number<<endl;
+        longnum i = 1;
+        while (i < 10 && temp != reference_number)
         {
-            if (right!=left)
-            {
-                temp = temp/10;
-                right = temp%10;
-                left = (temp/10)%10;
-                i++;
-            }else
-            {
-                base = right;
-
-                while(i<=lenght&&right==left)
-                {
-                    temp = temp/10;
-                    right = temp%10;
-                    left = (temp/10)%10;
-                    i++;
-                    exp++;
-                }
-
-
-            }
+            temp = num*i;
+            i++;
         }
-    }*/
-
-    return false;
-}
+        cout<<i<<endl;
+        if (i<9)
+            return true;
+        if (temp==reference_number)
+            return true;
+        return false;
+    }
 
 bool is_easy_to_remember(longnum num)
 {
