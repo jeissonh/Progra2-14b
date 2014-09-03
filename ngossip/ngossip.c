@@ -917,17 +917,21 @@ bool is_parasite(longnum num)
         longnum reference_number = calc_parasite(num);
         longnum i = 1;
 
-        while (i < 10 && temp != reference_number)
+        if (num!=0)
         {
-            temp = num*i;
-            i++;
+                    while (i < 10 && temp != reference_number)
+                    {
+                        temp = num*i;
+                        i++;
+                    }
+
+                    if (i<9)
+                        return true;
+
+                    if (temp==reference_number)
+                        return true;
         }
 
-        if (i<9)
-            return true;
-
-        if (temp==reference_number)
-            return true;
 
         return false;
     }
