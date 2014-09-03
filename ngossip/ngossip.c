@@ -915,18 +915,20 @@ bool is_parasite(longnum num)
     {
         longnum temp = num;
         longnum reference_number = calc_parasite(num);
-        cout<<reference_number<<endl;
         longnum i = 1;
+
         while (i < 10 && temp != reference_number)
         {
             temp = num*i;
             i++;
         }
-        cout<<i<<endl;
+
         if (i<9)
             return true;
+
         if (temp==reference_number)
             return true;
+
         return false;
     }
 
