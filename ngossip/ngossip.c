@@ -930,9 +930,22 @@ bool is_parasite(longnum num)
 
                     if (temp==reference_number)
                         return true;
+
+                    i=1;
+                    temp= num;
+
+                    while (i < 10 && temp != reference_number)
+                    {
+                        temp = num/i;
+                        i++;
+                    }
+
+                    if (i<9)
+                        return true;
+
+                    if (temp==reference_number)
+                        return true;
         }
-
-
         return false;
     }
 
