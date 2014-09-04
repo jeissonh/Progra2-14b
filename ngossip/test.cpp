@@ -2116,6 +2116,7 @@ TEST_CASE("parasite")
 	REQUIRE( is_parasite(857142) );
 	REQUIRE( is_parasite(1990) == false );
 	REQUIRE( is_parasite(7104) == false );
+    REQUIRE( is_parasite(105263157894736842) );
 }
 
 TEST_CASE("easy_to_remember")
