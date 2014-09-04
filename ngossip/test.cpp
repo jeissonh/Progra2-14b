@@ -2107,7 +2107,7 @@ TEST_CASE("parasite")
 	REQUIRE( is_parasite(142857) );
 	REQUIRE( is_parasite(142858) == false );
 	REQUIRE( is_parasite(179487) );
-	REQUIRE( is_parasite(285714) );
+    REQUIRE( is_parasite(285714) == false);
 	REQUIRE( is_parasite(410256) );
 	REQUIRE( is_parasite(428571) );
 	REQUIRE( is_parasite(571428) );
