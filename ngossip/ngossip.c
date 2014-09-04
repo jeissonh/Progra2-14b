@@ -917,7 +917,7 @@ bool is_parasite(longnum num)
         longnum reference_number = calc_parasite(num);
         longnum i = 1;
 
-        if (num!=0)
+        if (num!=0&&num!=reference_number)
         {
                     while (i < 10 && temp != reference_number)
                     {
