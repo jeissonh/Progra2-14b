@@ -32,9 +32,29 @@ bool is_abundant(longnum num)
 }
 
 
-bool is_amicable(longnum num)
-{
-    return false;
+bool is_amicable(longnum num) {
+	if(num == 0 || num == 1){
+		return false;
+	}
+
+	longnum suma_total_divisores = 1;
+	for(longnum i = 2; i < num; ++i){
+		if(num % i == 0)
+			suma_total_divisores += i;
+	}
+
+	longnum suma_total_divisores_2do_numero = 1;
+	for(longnum i = 2; i < suma_total_divisores; ++i){
+		if(suma_total_divisores % i == 0)
+			suma_total_divisores_2do_numero += i;
+	}
+
+	bool flag = false;
+	if(suma_total_divisores_2do_numero == num){
+		flag = true;
+	}
+
+	return flag;
 }
 
 bool is_apocalyptic_power(longnum num)
