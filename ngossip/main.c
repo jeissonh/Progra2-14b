@@ -8,8 +8,10 @@
 int print_help();
 int print_version();
 bool is_integer(const char* text);
-int print_properties(const char* num);
+int print_properties_text(const char* num);
 void print_prime_factors(longnum num);
+bool process_filename(const char* filename);
+int print_properties_num(longnum num);
 
 
 int main(int argc, char* argv[])
@@ -25,7 +27,24 @@ int main(int argc, char* argv[])
 	for ( int i = 1; i < argc; ++i )
 	{
 		if ( is_integer(argv[i]) )
-			print_properties(argv[i]);
+			print_properties_text(argv[i]);
+		else
+		{
+			if ( *argv[i] == '-' )
+			{
+				if ( strcmp(argv[i], "-i") == 0 )
+				{
+					if ( i + 1 >= argc )
+						return fprintf(stderr, "ngossip: file not specified\n");
+
+					process_filename(argv[i + 1]);
+				}
+			}
+			else
+			{
+				//process_property(argv[i]);
+			}
+		}
 	}
 
 	return 0;
@@ -37,11 +56,11 @@ int print_help()
 		   "Usage: ngossip [-iltV] [NUMBERS] [PROPERTIES] [-i FILE]\n"
 		   "Number Gossip: Show properties of positive integer NUMBERS. Options:\n"
 
-		   "  -i FILE          Read numbers from FILE\n"
-		   "  -l, --list       List all available properties\n"
-		   "  -t, --transpose  For each PROPERTIES show applying numbers\n"
-		   "  -v, --verbose    Show a short description of each property\n"
-		   "      --version    Print version of this program\n"
+		   "  -i FILE, --input=FILE   Read numbers from FILE\n"
+		   "  -l, --list              List all available properties\n"
+		   "  -t, --transpose         For each PROPERTIES show applying numbers\n"
+		   "  -v, --verbose           Show a short description of each property\n"
+		   "      --version           Print version of this program\n"
 
 		   "If not parameters are given, read numbers from standard input until EOF\n"
 		   "NUMBERS can have ranges in form n1:n2, e.g: 80:120\n");
@@ -71,11 +90,15 @@ bool is_integer(const char text[])
 	return true;
 }
 
-int print_properties(const char* text)
+int print_properties_text(const char* text)
 {
 	longnum num = strtoull(text, NULL, 10);
 	if ( num == 0 ) return 1;
+	return print_properties_num(num);
+}
 
+int print_properties_num(longnum num)
+{
 	printf("%llu:\nprime factors: ", num);
 	print_prime_factors(num);
 	printf("\n");
@@ -159,5 +182,25 @@ void print_prime_factors(longnum num)
 			printf(" ");
 		}
 	}
+}
+
+bool process_file(FILE* file);
+
+
+bool process_filename(const char* filename)
+{
+	FILE* file = fopen(filename, "r");
+	bool result = process_file(file);
+	fclose(file);
+	return result;
+}
+
+bool process_file(FILE* file)
+{
+	longnum num = 0;
+	for( fscanf(file, "%llu", &num); ! feof(file); fscanf(file, "%llu", &num) )
+		print_properties_num(num);
+
+	return true;
 }
 
