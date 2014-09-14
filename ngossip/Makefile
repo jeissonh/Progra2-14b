@@ -13,5 +13,8 @@ libngossip.a: ngossip.c ngossip.h
 	gcc -std=c11 -c ngossip.c -o ngossip.o
 	ar rcs libngossip.a ngossip.o
 
+doc: Doxyfile *.h
+	doxygen Doxyfile
+
 clean:
-	rm *.o lib*.a test ngossip
+	rm -rf *.o lib*.a test ngossip doc/

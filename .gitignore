@@ -30,3 +30,5 @@ test
 # Specific executables
 /ngossip/ngossip
 
+# Documentation / Doxygen
+doc/
