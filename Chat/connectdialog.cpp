@@ -13,6 +13,11 @@ ConnectDialog::~ConnectDialog()
 	delete ui;
 }
 
+bool ConnectDialog::shouldConnectAsServer() const
+{
+	return ui->serverRadioButton->isChecked();
+}
+
 QString ConnectDialog::getHost() const
 {
 	return ui->hostLineEdit->text();
@@ -21,9 +26,4 @@ QString ConnectDialog::getHost() const
 QString ConnectDialog::getPort() const
 {
 	return ui->portLineEdit->text();
-}
-
-bool ConnectDialog::shouldConnectAsServer() const
-{
-	return ui->serverRadioButton->isChecked();
 }
