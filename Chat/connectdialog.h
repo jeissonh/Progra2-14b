@@ -34,6 +34,8 @@ class ConnectDialog : public QDialog
 	/// al servidor en este puerto
 	QString getPort() const;
 
+  private slots:
+	void on_clientRadioButton_clicked();
 };
 
 #endif // CONNECTDIALOG_H

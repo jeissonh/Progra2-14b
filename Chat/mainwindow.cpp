@@ -16,6 +16,10 @@ MainWindow::MainWindow(QWidget *parent)
 
 	// Cada vez que se presiona el boton connectOrSendButton se invoca el metodo connectOrSend()
 	connect(ui->connectOrSendButton, SIGNAL(clicked()), this, SLOT(connectOrSend()));
+
+	// Cuando se presiona Enter en el campo para escribir mensajes, se produce el mismo
+	// efecto que presionar el boton Send
+	connect(ui->messageLineEdit, SIGNAL(returnPressed()), this, SLOT(sendMessage()));
 }
 
 MainWindow::~MainWindow()
@@ -169,4 +173,7 @@ void MainWindow::sendMessage()
 	Q_ASSERT(connection);
 	QTextStream otherMachine(connection);
 	otherMachine << message << endl;
+
+	// Limpiar el campo de texto para comodidad del usuario de ingresar el proximo
+	ui->messageLineEdit->setText("");
 }
