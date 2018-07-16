@@ -161,8 +161,16 @@ void MainWindow::messageReceived()
 	// lado de la conexion.
 	QTextStream otherMachine( (QTcpSocket*) sender() );
 
-	// Sacar la linea enviada desde la otra maquina y agregarla al historial de la conversacion
-	ui->conversationHistory->append(otherMachine.readLine());
+	// Sacar la linea enviada y agregarla al historial de la conversacion
+	const QString& message = otherMachine.readLine();
+	ui->conversationHistory->append(message);
+
+	// Si esta instancia es el servidor
+	if ( connectionWithServer == nullptr )
+	{
+		// El servidor recibio un mensaje de un cliente y debe propagarlo a los demas
+		broadcastMessage(message);
+	}
 }
 
 void MainWindow::sendMessage()
@@ -176,27 +184,38 @@ void MainWindow::sendMessage()
 	// Agregar el identificador del usuario para que los demas sepan de quien proviene
 	message = '[' + this->nickname + "] " + message;
 
-	// Agregar el mensaje al historial de la conversacion
-	ui->conversationHistory->append(message);
-
 	// Se va a enviar el mensaje por la conexion. La conexion trabaja como un archivo.
 	// Cuando escribimos en un archivo tradicional la informacion va a parar al disco.
 	// Cuando escribimos en un QTcpSocket la informacion no va a parar a disco sino a
-	// otra maquina, al otro lado de la conexion. El QTcpSocket trabaja en binario. Si
-	// queremos enviar texto, un QTextStream se comporta como un std::cout, que
-	// en lugar de enviar salida a la pantalla, lo hace al otro lado de la conexion
+	// otra maquina, al otro lado de la conexion.
 	if (connectionWithServer)
 	{
+		// En modo cliente enviamos el mensaje al servidor. El QTcpSocket trabaja en binario. Si
+		// queremos enviar texto, un QTextStream se comporta como un std::cout, que
+		// en lugar de enviar salida a la pantalla, lo hace al otro lado de la conexion
 		QTextStream otherMachine(connectionWithServer);
 		otherMachine << message << endl;
 	}
 	else
-		foreach (QTcpSocket* socket, connectionsWithClients)
-		{
-			QTextStream otherMachine(socket);
-			otherMachine << message << endl;
-		}
+	{
+		// El servidor agrega el mensaje al historial de la conversacion
+		ui->conversationHistory->append(message);
+
+		// El servidor no tiene un cliente conectado, sino muchos. Enviarles a todos el mensaje
+		broadcastMessage(message);
+	}
 
 	// Limpiar el campo de texto para comodidad del usuario de ingresar el proximo
 	ui->messageLineEdit->setText("");
+}
+
+void MainWindow::broadcastMessage(const QString& message)
+{
+	// Por cada cliente conectado a este servidor
+	foreach (QTcpSocket* socket, connectionsWithClients)
+	{
+		// Enviarle el mensaje
+		QTextStream otherMachine(socket);
+		otherMachine << message << endl;
+	}
 }

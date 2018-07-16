@@ -58,6 +58,9 @@ class MainWindow : public QMainWindow
 	/// Se invoca cada vez que el usuario pide enviar un mensaje a la conversacion. Ocurre cuando
 	/// se presiona Enter en el campo de texto de mensaje o cuando se presiona el boton Send
 	void sendMessage();
+	/// Envia el mensaje dado a todos los clientes conectados
+	/// @param El mensaje a enviar a cada cliente
+	void broadcastMessage(const QString& message);
 
   protected:
 	/// Muestra el dialogo para solicitar los detalles de conexion. Si el dialogo es aceptado
