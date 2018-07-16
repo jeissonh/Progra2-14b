@@ -19,6 +19,11 @@ bool ConnectDialog::shouldConnectAsServer() const
 	return ui->serverRadioButton->isChecked();
 }
 
+QString ConnectDialog::getNickname() const
+{
+	return ui->nicknameLineEdit->text();
+}
+
 QString ConnectDialog::getHost() const
 {
 	return ui->hostLineEdit->text();

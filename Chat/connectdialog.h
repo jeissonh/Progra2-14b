@@ -27,6 +27,8 @@ class ConnectDialog : public QDialog
 	/// Si retorna false, es porque el usuario quiere que esta copia del programa se conecte
 	/// como un cliente a un servidor que esta escuchando por conexiones
 	bool shouldConnectAsServer() const;
+	/// Retorna el nombre con el que el usuario quiere identificarse en la conversacion
+	QString getNickname() const;
 	/// Retorna el nombre del servidor al que quiere conectar el usuario si es en modo cliente
 	QString getHost() const;
 	/// Retorna el puerto introducido por el usuario. Esta instancia del programa esperara por

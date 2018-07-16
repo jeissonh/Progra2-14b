@@ -47,6 +47,7 @@ void MainWindow::connectToNetwork()
 	if ( dialog->exec() )
 	{
 		// El dialogo fue aceptado. Obtener los datos escritos del usuario y establecer la conexion
+		this->nickname = dialog->getNickname();
 		quint16 port = dialog->getPort().toUInt();
 
 		// El establecimiento de la conexion depende de si el usuario marco "Servidor" o "Cliente"
@@ -167,10 +168,13 @@ void MainWindow::messageReceived()
 void MainWindow::sendMessage()
 {
 	// El usuario escribe el mensaje que quiere enviar en el campo de texto. Obtener el mensaje
-	const QString& message = ui->messageLineEdit->text();
+	QString message = ui->messageLineEdit->text().trimmed();
 
 	// Si el mensaje tras quitarle espacios en blanco al inicio y final es vacio, no enviar nada
-	if ( message.trimmed().length() == 0 ) return;
+	if ( message.isEmpty() ) return;
+
+	// Agregar el identificador del usuario para que los demas sepan de quien proviene
+	message = '[' + this->nickname + "] " + message;
 
 	// Agregar el mensaje al historial de la conversacion
 	ui->conversationHistory->append(message);

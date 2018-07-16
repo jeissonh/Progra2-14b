@@ -32,6 +32,8 @@ class MainWindow : public QMainWindow
 	/// Registra todas las conexiones aceptadas de clientes. Esto permite que varias personas
 	/// puedan chatear simultaneamente, y no solo dos
 	QList<QTcpSocket*> connectionsWithClients;
+	/// Nombre del usuario actual que es usado para identificar a cada interlocutor
+	QString nickname;
 
   public:
 	/// Constructor

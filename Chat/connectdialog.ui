@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>243</height>
+    <height>281</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -26,6 +26,23 @@
    <string>Dialog</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="nicknameLabel">
+       <property name="text">
+        <string>&amp;Nickname</string>
+       </property>
+       <property name="buddy">
+        <cstring>nicknameLineEdit</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="nicknameLineEdit"/>
+     </item>
+    </layout>
+   </item>
    <item>
     <widget class="QGroupBox" name="modeGroupBox">
      <property name="title">
