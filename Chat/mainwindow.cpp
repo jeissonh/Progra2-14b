@@ -105,6 +105,7 @@ bool MainWindow::connectAsClient(const QString& host, quint16 port)
 	// emitiendo la sennal connected(). En ese momento, invocaremos el metodo connectionEstablished
 	// el cual se encarga de habilitar la interfaz para poder chatear
 	connect(connectionWithServer, SIGNAL(connected()), this, SLOT(connectionEstablished()));
+	connect(connectionWithServer, SIGNAL(disconnected()), this, SLOT(connectionTerminated()));
 //	connect(newConnectionWithClient, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(connectionFailed()));
 	return false;
 }
@@ -122,7 +123,7 @@ void MainWindow::clientAskedForNewConnection()
 
 	// Si se pierde la conexion con este cliente, eliminar el objeto connection para
 	// ahorrar recursos y evitar enviarle datos que no va a recibir
-	connect(newConnectionWithClient, SIGNAL(disconnected()), newConnectionWithClient, SLOT(deleteLater()));
+	connect(newConnectionWithClient, SIGNAL(disconnected()), this, SLOT(connectionTerminated()));
 
 	// Preparar la interfaz para que el usuario pueda escribir mensajes en el chat
 	connectionEstablished();
@@ -138,6 +139,8 @@ void MainWindow::connectionEstablished()
 
 	// El boton de Connect ahora se comporta como el boton de Send
 	ui->connectOrSendButton->setText(tr("&Send"));
+	ui->connectOrSendButton->setEnabled(true);
+	ui->messageLineEdit->setEnabled(true);
 
 	// Tambien alguien al otro lado de la conexion puede enviarnos mensajes. El socket
 	// emite la sennal readyRead() cuando se nos ha enviado datos por la red
@@ -150,6 +153,35 @@ void MainWindow::connectionFailed(/*QAbstractSocket::SocketError*/)
 	statusBar()->showMessage(tr("Connection failed"));
 }
 
+void MainWindow::connectionTerminated()
+{
+	// Si se perdio la conexion con el servidor
+	if ( connectionWithServer )
+	{
+		// Avisar en la barra de estado
+		statusBar()->showMessage(tr("Connection lost"));
+
+		// Regresar el boton de enviar a conectar
+		ui->connectOrSendButton->setText( tr("&Connect") );
+		ui->messageLineEdit->setEnabled(false);
+	}
+	else
+	{
+		// Quitar al cliente que se desconecto de la lista para no seguir enviandole mensajes
+		QTcpSocket* client = static_cast<QTcpSocket*>( sender() );
+		connectionsWithClients.removeOne( client );
+
+		// Si no quedan clientes
+		if ( connectionsWithClients.isEmpty() )
+		{
+			// Dehabilitar los controles para enviar mensajes
+			statusBar()->showMessage(tr("No clients to chat with"));
+			ui->connectOrSendButton->setEnabled(false);
+			ui->messageLineEdit->setEnabled(false);
+		}
+	}
+}
+
 void MainWindow::messageReceived()
 {
 	// Se ha recibido un mensaje por la conexion. La conexion trabaja como un archivo.
@@ -159,7 +191,7 @@ void MainWindow::messageReceived()
 	// Si queremos leer texto, un QTextStream se comporta como un std::cin, que
 	// en lugar de procesar texto ingresado en teclado, procesa texto enviado desde el otro
 	// lado de la conexion.
-	QTextStream otherMachine( (QTcpSocket*) sender() );
+	QTextStream otherMachine( static_cast<QTcpSocket*>( sender() ) );
 
 	// Sacar la linea enviada y agregarla al historial de la conversacion
 	const QString& message = otherMachine.readLine();

@@ -51,6 +51,8 @@ class MainWindow : public QMainWindow
 	void connectionEstablished();
 	/// Se invoca cuando ocurre un error de conexion
 	void connectionFailed();
+	/// Se invoca cuando se ha desconectado con el servidor o cuando un cliente se desconecta
+	void connectionTerminated();
 	/// Se invoca cuando se ha recibido un mensaje de la otra instancia del programa con la que
 	/// esta conectada esta instancia. Los mensajes son normalmente textos que los usuarios del
 	/// chat quieren comunicar a los demas, y deben aparecer en el historial de la conversacion
