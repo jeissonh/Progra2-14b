@@ -11,7 +11,8 @@ MainWindow::MainWindow(QWidget *parent)
 	, ui(new Ui::MainWindow)
 {
 	// Aplica el disenno hecho en mainwindow.ui a este objeto MainWindow
-	ui->setupUi(this);
+    ui->setupUi(this);
+    this->setWindowTitle("Chat");
 
 	// Cada vez que se presiona el boton connectOrSendButton se invoca el metodo connectOrSend()
 	connect(ui->connectOrSendButton, SIGNAL(clicked()), this, SLOT(connectOrSend()));
