@@ -1,15 +1,14 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QTextStream>
+
+#include "mainwindow.h"
 #include "connectdialog.h"
+#include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
 	, ui(new Ui::MainWindow)
-	, server(nullptr)
-	, connection(nullptr)
 {
 	// Aplica el disenno hecho en mainwindow.ui a este objeto MainWindow
 	ui->setupUi(this);
@@ -62,7 +61,7 @@ bool MainWindow::connectAsServer(quint16 port)
 {
 	// El usuario quiere que esta instancia del programa sea un servidor que espere (o escuche)
 	// por conexiones de clientes. Un QTcpServer se encarga de esta ecucha
-	if ( ! server ) server = new QTcpServer(this);
+	if ( server == nullptr ) server = new QTcpServer(this);
 
 	// El servidor tratara de escuchar en esta maquina en el puerto dado por el usuario
 	// en todas (Any) las conexiones de red que tenga
@@ -73,11 +72,11 @@ bool MainWindow::connectAsServer(quint16 port)
 		statusBar()->showMessage(tr("Listening in %1:%2")
 			.arg(server->serverAddress().toString()).arg(server->serverPort()));
 
-		// Mientra el servidor espera por clientes que se quieran conectar, puede realizar
+		// Mientras el servidor espera por clientes que se quieran conectar, puede realizar
 		// otras tareas. Es decir, escuchar no implica bloquear la aplicacion. Cuando un
 		// cliente decida conectarse, el QTcpServer emitira una sennal newConnection()
 		// la cual la conectamos con nuestro metodo newConnectionAsked()
-		connect(server, SIGNAL(newConnection()), this, SLOT(newConnectionAsked()));
+		connect(server, SIGNAL(newConnection()), this, SLOT(clientAskedForNewConnection()));
 		return true;
 	}
 	else
@@ -96,27 +95,33 @@ bool MainWindow::connectAsClient(const QString& host, quint16 port)
 	// esperando en la direccion y puerto dado
 	statusBar()->showMessage(tr("Connecting to %1:%2...").arg(host).arg(port));
 
-	// Un socket es una conexion con otra maquina. Crear uno tratar de establecer la conexion
-	if ( ! connection ) connection = new QTcpSocket(this);
-	connection->connectToHost(host, port);
+	// Un socket es una conexion con otra maquina. Crear uno y tratar de establecer la conexion
+	if ( connectionWithServer == nullptr ) connectionWithServer = new QTcpSocket(this);
+	connectionWithServer->connectToHost(host, port);
 
 	// La conexion no se establece de inmediato. Mientras tanto, el cliente puede hacer otras
 	// tareas. Cuando la conexion finalmente se haya establecido, el QTcpSocket lo avisara
 	// emitiendo la sennal connected(). En ese momento, invocaremos el metodo connectionEstablished
 	// el cual se encarga de habilitar la interfaz para poder chatear
-	connect(connection, SIGNAL(connected()), this, SLOT(connectionEstablished()));
+	connect(connectionWithServer, SIGNAL(connected()), this, SLOT(connectionEstablished()));
+//	connect(newConnectionWithClient, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(connectionFailed()));
 	return false;
 }
 
-void MainWindow::newConnectionAsked()
+void MainWindow::clientAskedForNewConnection()
 {
 	// Un cliente solicito conectarse con este servidor en el puerto dado. Aceptarle la
 	// conexion con nextPendingConnection() y avisarlo en la barra de estado
-	connection = server->nextPendingConnection();
+	QTcpSocket* newConnectionWithClient = server->nextPendingConnection();
+	connectionsWithClients.append(newConnectionWithClient);
+
+	// Tambien alguien al otro lado de la conexion puede enviarnos mensajes. El socket
+	// emite la sennal readyRead() cuando se nos ha enviado datos por la red
+	connect(newConnectionWithClient, SIGNAL(readyRead()), this, SLOT(messageReceived()));
 
 	// Si se pierde la conexion con este cliente, eliminar el objeto connection para
 	// ahorrar recursos y evitar enviarle datos que no va a recibir
-	connect(connection, SIGNAL(disconnected()), connection, SLOT(deleteLater()));
+	connect(newConnectionWithClient, SIGNAL(disconnected()), newConnectionWithClient, SLOT(deleteLater()));
 
 	// Preparar la interfaz para que el usuario pueda escribir mensajes en el chat
 	connectionEstablished();
@@ -135,7 +140,13 @@ void MainWindow::connectionEstablished()
 
 	// Tambien alguien al otro lado de la conexion puede enviarnos mensajes. El socket
 	// emite la sennal readyRead() cuando se nos ha enviado datos por la red
-	connect(connection, SIGNAL(readyRead()), this, SLOT(messageReceived()));
+	if ( connectionWithServer )
+		connect(connectionWithServer, SIGNAL(readyRead()), this, SLOT(messageReceived()));
+}
+
+void MainWindow::connectionFailed(/*QAbstractSocket::SocketError*/)
+{
+	statusBar()->showMessage(tr("Connection failed"));
 }
 
 void MainWindow::messageReceived()
@@ -147,7 +158,7 @@ void MainWindow::messageReceived()
 	// Si queremos leer texto, un QTextStream se comporta como un std::cin, que
 	// en lugar de procesar texto ingresado en teclado, procesa texto enviado desde el otro
 	// lado de la conexion.
-	QTextStream otherMachine(connection);
+	QTextStream otherMachine( (QTcpSocket*) sender() );
 
 	// Sacar la linea enviada desde la otra maquina y agregarla al historial de la conversacion
 	ui->conversationHistory->append(otherMachine.readLine());
@@ -170,9 +181,17 @@ void MainWindow::sendMessage()
 	// otra maquina, al otro lado de la conexion. El QTcpSocket trabaja en binario. Si
 	// queremos enviar texto, un QTextStream se comporta como un std::cout, que
 	// en lugar de enviar salida a la pantalla, lo hace al otro lado de la conexion
-	Q_ASSERT(connection);
-	QTextStream otherMachine(connection);
-	otherMachine << message << endl;
+	if (connectionWithServer)
+	{
+		QTextStream otherMachine(connectionWithServer);
+		otherMachine << message << endl;
+	}
+	else
+		foreach (QTcpSocket* socket, connectionsWithClients)
+		{
+			QTextStream otherMachine(socket);
+			otherMachine << message << endl;
+		}
 
 	// Limpiar el campo de texto para comodidad del usuario de ingresar el proximo
 	ui->messageLineEdit->setText("");

@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QList>
 
 // Forward declarations
 namespace Ui { class MainWindow; }
@@ -17,32 +18,38 @@ class QTcpSocket;
 class MainWindow : public QMainWindow
 {
 	Q_OBJECT
-
-  public:
-	/// Constructor
-	explicit MainWindow(QWidget *parent = 0);
-	/// Destructor
-	~MainWindow();
+	Q_DISABLE_COPY(MainWindow)
 
   private:
 	/// Interfaz creada con el disennador de formularios de Qt (QtDesigner)
-	Ui::MainWindow *ui;
+	Ui::MainWindow* ui = nullptr;
 	/// Si el usuario solicita que esta copia de la aplicacion corriendo se comporte como un
 	/// servidor, se creara un servidor TCP capaz de escuchar por conexiones
-	QTcpServer* server;
+	QTcpServer* server = nullptr;
 	/// Conexion con otra instancia de esta aplicacion ejecutandose. Se usa tanto en modo
 	/// cliente como en modo servidor
-	QTcpSocket* connection;
+	QTcpSocket* connectionWithServer = nullptr;
+	/// Registra todas las conexiones aceptadas de clientes. Esto permite que varias personas
+	/// puedan chatear simultaneamente, y no solo dos
+	QList<QTcpSocket*> connectionsWithClients;
+
+  public:
+	/// Constructor
+	explicit MainWindow(QWidget* parent = nullptr);
+	/// Destructor
+	virtual ~MainWindow();
 
   protected slots:
 	/// Se invoca cuando se presiona el boton Connect o el boton Send
 	void connectOrSend();
 	/// Se invoca cuando esta en modo servidor y un cliente solicito conectarse con el
-	void newConnectionAsked();
+	void clientAskedForNewConnection();
 	/// Se invoca cuando el servidor ha aceptado una conexion con el cliente en ambos lados:
 	/// tanto en el servidor como en el cliente
 	void connectionEstablished();
-	/// Se invoca cuando se ha recibido un mensaje de la otra instancia del program con la que
+	/// Se invoca cuando ocurre un error de conexion
+	void connectionFailed();
+	/// Se invoca cuando se ha recibido un mensaje de la otra instancia del programa con la que
 	/// esta conectada esta instancia. Los mensajes son normalmente textos que los usuarios del
 	/// chat quieren comunicar a los demas, y deben aparecer en el historial de la conversacion
 	void messageReceived();
